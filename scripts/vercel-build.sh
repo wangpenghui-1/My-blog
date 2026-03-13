@@ -4,15 +4,39 @@ set -euo pipefail
 
 HUGO_VERSION="${HUGO_VERSION:-0.157.0}"
 BUILD_DIR=".vercel-hugo"
-ARCHIVE="hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
-DOWNLOAD_URL="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${ARCHIVE}"
+
+if [[ -f ".gitmodules" ]]; then
+  echo "Initializing git submodules..."
+  git submodule sync --recursive
+  git submodule update --init --recursive
+fi
 
 rm -rf "${BUILD_DIR}"
 mkdir -p "${BUILD_DIR}"
 
 echo "Downloading Hugo ${HUGO_VERSION}..."
-curl -fsSL "${DOWNLOAD_URL}" -o "${BUILD_DIR}/${ARCHIVE}"
-tar -xzf "${BUILD_DIR}/${ARCHIVE}" -C "${BUILD_DIR}"
+ARCHIVES=(
+  "hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
+  "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+  "hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
+  "hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
+)
+
+downloaded_archive=""
+for archive in "${ARCHIVES[@]}"; do
+  download_url="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${archive}"
+  if curl -fsSL "${download_url}" -o "${BUILD_DIR}/${archive}"; then
+    downloaded_archive="${archive}"
+    break
+  fi
+done
+
+if [[ -z "${downloaded_archive}" ]]; then
+  echo "Failed to download a Hugo release archive for version ${HUGO_VERSION}" >&2
+  exit 1
+fi
+
+tar -xzf "${BUILD_DIR}/${downloaded_archive}" -C "${BUILD_DIR}"
 
 echo "Using Hugo binary:"
 "${BUILD_DIR}/hugo" version
