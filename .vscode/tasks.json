@@ -1,0 +1,106 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Preview: Hugo Dev Server",
+      "type": "shell",
+      "command": "hugo server -D --disableFastRender --renderToMemory --navigateToChanged --bind 127.0.0.1 --port 1313",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": [
+        {
+          "pattern": {
+            "regexp": "^$"
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "Start building sites",
+            "endsPattern": "Press Ctrl\\+C to stop"
+          }
+        }
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "hugo-preview",
+        "clear": true
+      }
+    },
+    {
+      "label": "Preview: Open Local Site",
+      "type": "shell",
+      "command": "Start-Process \"http://localhost:1313/\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Preview: Start + Open Browser",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Preview: Hugo Dev Server",
+        "Preview: Open Local Site"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Review: Production Build",
+      "type": "shell",
+      "command": "hugo --gc --minify --destination .codex-review-public",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "hugo-review",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean: Review Output",
+      "type": "shell",
+      "command": "if (Test-Path '.codex-review-public') { Remove-Item -Recurse -Force '.codex-review-public' }",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Content: New Post Draft",
+      "type": "shell",
+      "command": "hugo new \"content/posts/${input:postSlug}.md\"",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "hugo-content",
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "postSlug",
+      "type": "promptString",
+      "description": "输入新文章路径，例如 research/my-note 或 first-post",
+      "default": "first-post"
+    }
+  ]
+}

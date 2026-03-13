@@ -1,0 +1,101 @@
+{{ define "main" }}
+{{ $recent := first 4 site.RegularPages.ByDate.Reverse }}
+{{ $latest := index $recent 0 }}
+{{ $research := site.GetPage "/posts/research" }}
+{{ $reading := site.GetPage "/posts/reading" }}
+
+<div class="garden-home">
+  <section class="garden-hero">
+    <div class="garden-hero-copy">
+      <p class="garden-eyebrow">Digital Garden / Personal Systems</p>
+      <h1>把科研、开发与阅读，酿成一套长期生长的个人系统。</h1>
+      <p class="garden-intro">
+        {{ site.Params.description }}
+        这里不是流水账，而是我用来整理问题、沉淀方法、追踪长期兴趣的一座数字花园。
+      </p>
+      <div class="garden-actions">
+        <a class="garden-pill garden-pill-primary" href="/posts/research/">进入科研与开发</a>
+        <a class="garden-pill" href="/posts/reading/">阅读与思考</a>
+        {{ with $latest }}
+        <a class="garden-pill" href="{{ .RelPermalink }}">最新文章</a>
+        {{ end }}
+      </div>
+    </div>
+
+    <aside class="garden-hero-panel">
+      <div class="garden-signal">
+        <span class="garden-signal-label">Current Focus</span>
+        <p>把输入变成系统，把系统变成作品。</p>
+      </div>
+      <div class="garden-meta">
+        <div>
+          <span>最近更新</span>
+          {{ with $latest }}
+          <strong>{{ .Date.Format "2006.01.02" }}</strong>
+          {{ else }}
+          <strong>待添加</strong>
+          {{ end }}
+        </div>
+        <div>
+          <span>公开文章</span>
+          <strong>{{ len site.RegularPages }}</strong>
+        </div>
+        <div>
+          <span>主轴栏目</span>
+          <strong>2</strong>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="garden-focus-grid">
+    <a class="garden-focus-card" href="/posts/research/">
+      <span class="garden-card-index">01</span>
+      <h2>{{ with $research }}{{ .Title }}{{ else }}科研与开发{{ end }}</h2>
+      <p>{{ with $research }}{{ .Description }}{{ else }}记录研究项目、实验过程与开发笔记。{{ end }}</p>
+    </a>
+
+    <a class="garden-focus-card" href="/posts/reading/">
+      <span class="garden-card-index">02</span>
+      <h2>{{ with $reading }}{{ .Title }}{{ else }}阅读与思考{{ end }}</h2>
+      <p>{{ with $reading }}{{ .Description }}{{ else }}记录阅读笔记、方法论和阶段性思考。{{ end }}</p>
+    </a>
+
+    {{ with $latest }}
+    <a class="garden-focus-card garden-focus-card-featured" href="{{ .RelPermalink }}">
+      <span class="garden-card-index">Latest</span>
+      <h2>{{ .Title }}</h2>
+      <p>{{ .Summary | plainify | truncate 110 }}</p>
+      <span class="garden-card-meta">{{ .Date.Format "2006.01.02" }}</span>
+    </a>
+    {{ end }}
+  </section>
+
+  <section class="garden-feed">
+    <div class="garden-feed-head">
+      <div>
+        <p class="garden-eyebrow">Recent Writing</p>
+        <h2>最近的想法与笔记</h2>
+      </div>
+      <p>
+        保留一些未完成感，持续生长，而不是一次性写成“终稿”。
+      </p>
+    </div>
+
+    <div class="garden-post-list">
+      {{ range $recent }}
+      <article class="garden-post-item">
+        <div class="garden-post-meta">
+          <span>{{ .Date.Format "2006.01.02" }}</span>
+          <span>{{ .ReadingTime }} min</span>
+        </div>
+        <div class="garden-post-body">
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p>{{ .Summary | plainify | truncate 140 }}</p>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+</div>
+{{ end }}

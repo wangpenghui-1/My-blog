@@ -7,16 +7,29 @@
 1. 启动本地预览：
 
    ```bash
-   hugo server -D
+   hugo server -D --disableFastRender --renderToMemory --navigateToChanged
    ```
 
 2. 生成生产构建：
 
    ```bash
-   hugo --gc --minify
+   hugo --gc --minify --destination .codex-review-public
    ```
 
 `public/` 是构建产物，不再提交到仓库。
+
+## Cursor 任务
+
+仓库内已经提供可点击的 Cursor / VS Code 任务，打开命令面板后运行 `Tasks: Run Task` 即可：
+
+- `Preview: Hugo Dev Server`：启动本地开发服务器
+- `Preview: Open Local Site`：在系统浏览器打开 `http://localhost:1313/`
+- `Preview: Start + Open Browser`：先启动预览，再自动打开本地站点
+- `Review: Production Build`：执行接近 Vercel 的生产构建，输出到 `.codex-review-public/`
+- `Clean: Review Output`：清理本地审查产物
+- `Content: New Post Draft`：输入文章路径后创建草稿
+
+如果需要在 Cursor 内嵌预览，可以安装工作区推荐扩展 `Browse Lite`，再打开 `http://localhost:1313/`。
 
 ## 内容结构
 
