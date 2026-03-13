@@ -1,4 +1,23 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Project'
-theme = "PaperMod"
+baseURL = 'https://www.chalatu.xyz/'
+languageCode = 'zh-cn'
+title = '查拉图的数字花园' # 👈 这里可以改成你想要的任何名字
+theme = 'PaperMod'
+
+[params]
+  defaultTheme = "auto" # 自动跟随系统切换深色/浅色模式
+  ShowReadingTime = true # 显示阅读需要多少分钟
+  ShowShareButtons = true # 显示分享按钮
+  ShowPostNavLinks = true # 显示上一篇/下一篇文章链接
+  ShowToc = true # 在文章里显示目录，写长篇论文/日志必备
+
+# --- 下面是顶部的导航栏分类 ---
+
+[[menu.main]]
+  name = "科研与开发"
+  url = "/posts/research/"
+  weight = 1
+
+[[menu.main]]
+  name = "阅读与思考"
+  url = "/posts/reading/"
+  weight = 2
