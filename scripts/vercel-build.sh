@@ -2,23 +2,23 @@
 
 set -euo pipefail
 
-HUGO_VERSION="${HUGO_VERSION:-0.157.0}"
+PINNED_HUGO_VERSION="0.157.0"
 BUILD_DIR=".vercel-hugo"
 
 rm -rf "${BUILD_DIR}"
 mkdir -p "${BUILD_DIR}"
 
-echo "Downloading Hugo ${HUGO_VERSION}..."
+echo "Downloading Hugo ${PINNED_HUGO_VERSION}..."
 ARCHIVES=(
-  "hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
-  "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
-  "hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
-  "hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
+  "hugo_${PINNED_HUGO_VERSION}_linux-amd64.tar.gz"
+  "hugo_extended_${PINNED_HUGO_VERSION}_linux-amd64.tar.gz"
+  "hugo_${PINNED_HUGO_VERSION}_Linux-64bit.tar.gz"
+  "hugo_extended_${PINNED_HUGO_VERSION}_Linux-64bit.tar.gz"
 )
 
 downloaded_archive=""
 for archive in "${ARCHIVES[@]}"; do
-  download_url="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${archive}"
+  download_url="https://github.com/gohugoio/hugo/releases/download/v${PINNED_HUGO_VERSION}/${archive}"
   if curl -fsSL "${download_url}" -o "${BUILD_DIR}/${archive}"; then
     downloaded_archive="${archive}"
     break
@@ -26,7 +26,7 @@ for archive in "${ARCHIVES[@]}"; do
 done
 
 if [[ -z "${downloaded_archive}" ]]; then
-  echo "Failed to download a Hugo release archive for version ${HUGO_VERSION}" >&2
+  echo "Failed to download a Hugo release archive for version ${PINNED_HUGO_VERSION}" >&2
   exit 1
 fi
 
