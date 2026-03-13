@@ -1,0 +1,7 @@
+.hugo_build.lock
+.codex-review-public/
+.vercel/
+.hugo-server*.log
+public/
+resources/_gen/
+Thumbs.db

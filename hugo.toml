@@ -1,27 +1,45 @@
 baseURL = 'https://www.chalatu.xyz/'
-languageCode = 'zh-cn'
-title = '查拉图的数字花园' # 👈 这里可以改成你想要的任何名字
+defaultContentLanguage = 'zh-cn'
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+hasCJKLanguage = true
 theme = 'PaperMod'
+title = '查拉图的数字花园'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[languages]
+  [languages.zh-cn]
+    languageCode = 'zh-CN'
+    languageName = '简体中文'
+    title = '查拉图的数字花园'
+    weight = 1
 
 [params]
-  defaultTheme = "auto" # 自动跟随系统切换深色/浅色模式
-  ShowReadingTime = true # 显示阅读需要多少分钟
-  ShowShareButtons = true # 显示分享按钮
-  ShowPostNavLinks = true # 显示上一篇/下一篇文章链接
-  ShowToc = true # 在文章里显示目录，写长篇论文/日志必备
+  description = '记录科研、开发、阅读与思考。'
+  defaultTheme = 'auto'
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowToc = true
 
-# --- 下面是顶部的导航栏分类 ---
+  [params.assets]
+    favicon = 'favicon-32x32.png'
+    favicon16x16 = 'favicon-16x16.png'
+    favicon32x32 = 'favicon-32x32.png'
+    apple_touch_icon = 'apple-touch-icon.png'
+    safari_pinned_tab = 'safari-pinned-tab.svg'
+    theme_color = '#2e2e33'
+    msapplication_TileColor = '#2e2e33'
 
 [[menu.main]]
-  name = "科研与开发"
-  url = "/posts/research/"
+  name = '科研与开发'
+  url = '/posts/research/'
   weight = 1
 
 [[menu.main]]
-  name = "阅读与思考"
-  url = "/posts/reading/"
+  name = '阅读与思考'
+  url = '/posts/reading/'
   weight = 2
-
-
-
-  
