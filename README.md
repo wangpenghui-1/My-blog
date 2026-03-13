@@ -41,8 +41,10 @@
 仓库中的 `vercel.json` 固定了部署配置：
 
 - `framework = hugo`
-- `buildCommand = hugo --gc --minify`
+- `buildCommand = bash scripts/vercel-build.sh`
 - `outputDirectory = public`
+
+其中 `scripts/vercel-build.sh` 会在构建时固定下载并使用 Hugo `0.157.0`，避免 Vercel 默认 Hugo 版本过旧导致主题构建失败。
 
 建议保持 GitHub Pages 关闭状态，避免和 Vercel 的自定义域名、HTTPS 校验以及生产流量接管相互冲突。
 
