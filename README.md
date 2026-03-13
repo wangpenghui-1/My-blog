@@ -4,19 +4,13 @@
 
 ## 本地开发
 
-1. 初始化主题子模块：
-
-   ```bash
-   git submodule update --init --recursive
-   ```
-
-2. 启动本地预览：
+1. 启动本地预览：
 
    ```bash
    hugo server -D
    ```
 
-3. 生成生产构建：
+2. 生成生产构建：
 
    ```bash
    hugo --gc --minify
@@ -44,12 +38,9 @@
 - `buildCommand = bash scripts/vercel-build.sh`
 - `outputDirectory = public`
 
-其中 `scripts/vercel-build.sh` 会在构建时做两件事：
+其中 `scripts/vercel-build.sh` 会在构建时固定下载并使用 Hugo `0.157.0`，并兼容 Hugo release 包的新旧命名，避免 Vercel 默认 Hugo 版本过旧导致主题构建失败。
 
-- 显式初始化 `themes/PaperMod` 子模块
-- 固定下载并使用 Hugo `0.157.0`，并兼容 Hugo release 包的新旧命名
-
-这样可以同时避免 Vercel 漏拉主题子模块，或默认 Hugo 版本过旧导致主题构建失败。
+仓库内已经直接包含 `themes/PaperModLocal/`，部署不再依赖 Git submodule。
 
 建议保持 GitHub Pages 关闭状态，避免和 Vercel 的自定义域名、HTTPS 校验以及生产流量接管相互冲突。
 

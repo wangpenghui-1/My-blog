@@ -3,7 +3,7 @@ defaultContentLanguage = 'zh-cn'
 defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
 hasCJKLanguage = true
-theme = 'PaperMod'
+theme = 'PaperModLocal'
 title = '查拉图的数字花园'
 
 [caches]

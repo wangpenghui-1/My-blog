@@ -5,12 +5,6 @@ set -euo pipefail
 HUGO_VERSION="${HUGO_VERSION:-0.157.0}"
 BUILD_DIR=".vercel-hugo"
 
-if [[ -f ".gitmodules" ]]; then
-  echo "Initializing git submodules..."
-  git submodule sync --recursive
-  git submodule update --init --recursive
-fi
-
 rm -rf "${BUILD_DIR}"
 mkdir -p "${BUILD_DIR}"
 
