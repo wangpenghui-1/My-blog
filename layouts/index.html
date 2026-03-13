@@ -1,21 +1,25 @@
 {{ define "main" }}
 {{ $recent := first 4 site.RegularPages.ByDate.Reverse }}
 {{ $latest := index $recent 0 }}
-{{ $research := site.GetPage "/posts/research" }}
-{{ $reading := site.GetPage "/posts/reading" }}
+{{ $philosophy := site.GetPage "/posts/philosophy" }}
+{{ $soloCompany := site.GetPage "/posts/solo-company" }}
 
 <div class="garden-home">
   <section class="garden-hero">
     <div class="garden-hero-copy">
-      <p class="garden-eyebrow">Digital Garden / Personal Systems</p>
-      <h1>把科研、开发与阅读，酿成一套长期生长的个人系统。</h1>
+      <p class="garden-eyebrow">Personal Essays / Independent Work</p>
+      <h1 class="garden-hero-title" aria-label="把哲学的追问与一人公司的实践，写成长期有效的观点。">
+        <span class="garden-title-line">把哲学的追问</span>
+        <span class="garden-title-line garden-title-line-offset">与一人公司的实践</span>
+        <span class="garden-title-line garden-title-line-tail">写成长期有效的观点。</span>
+      </h1>
       <p class="garden-intro">
         {{ site.Params.description }}
-        这里不是流水账，而是我用来整理问题、沉淀方法、追踪长期兴趣的一座数字花园。
+        这里不追求资讯流式更新，而是持续发布能代表判断、品味与方法的长文。
       </p>
       <div class="garden-actions">
-        <a class="garden-pill garden-pill-primary" href="/posts/research/">进入科研与开发</a>
-        <a class="garden-pill" href="/posts/reading/">阅读与思考</a>
+        <a class="garden-pill garden-pill-primary" href="/posts/philosophy/">进入哲学与思考</a>
+        <a class="garden-pill" href="/posts/solo-company/">进入一人公司</a>
         {{ with $latest }}
         <a class="garden-pill" href="{{ .RelPermalink }}">最新文章</a>
         {{ end }}
@@ -24,8 +28,8 @@
 
     <aside class="garden-hero-panel">
       <div class="garden-signal">
-        <span class="garden-signal-label">Current Focus</span>
-        <p>把输入变成系统，把系统变成作品。</p>
+        <span class="garden-signal-label">Core Thesis</span>
+        <p>用长文建立判断，用作品建立信任。</p>
       </div>
       <div class="garden-meta">
         <div>
@@ -37,11 +41,11 @@
           {{ end }}
         </div>
         <div>
-          <span>公开文章</span>
+          <span>已发长文</span>
           <strong>{{ len site.RegularPages }}</strong>
         </div>
         <div>
-          <span>主轴栏目</span>
+          <span>核心板块</span>
           <strong>2</strong>
         </div>
       </div>
@@ -49,16 +53,16 @@
   </section>
 
   <section class="garden-focus-grid">
-    <a class="garden-focus-card" href="/posts/research/">
+    <a class="garden-focus-card" href="/posts/philosophy/">
       <span class="garden-card-index">01</span>
-      <h2>{{ with $research }}{{ .Title }}{{ else }}科研与开发{{ end }}</h2>
-      <p>{{ with $research }}{{ .Description }}{{ else }}记录研究项目、实验过程与开发笔记。{{ end }}</p>
+      <h2>{{ with $philosophy }}{{ .Title }}{{ else }}哲学与思考{{ end }}</h2>
+      <p>{{ with $philosophy }}{{ .Description }}{{ else }}讨论哲学问题、价值判断、生活秩序与长期思考。{{ end }}</p>
     </a>
 
-    <a class="garden-focus-card" href="/posts/reading/">
+    <a class="garden-focus-card" href="/posts/solo-company/">
       <span class="garden-card-index">02</span>
-      <h2>{{ with $reading }}{{ .Title }}{{ else }}阅读与思考{{ end }}</h2>
-      <p>{{ with $reading }}{{ .Description }}{{ else }}记录阅读笔记、方法论和阶段性思考。{{ end }}</p>
+      <h2>{{ with $soloCompany }}{{ .Title }}{{ else }}一人公司{{ end }}</h2>
+      <p>{{ with $soloCompany }}{{ .Description }}{{ else }}记录产品、商业、创作与独立经营的实践判断。{{ end }}</p>
     </a>
 
     {{ with $latest }}
@@ -74,11 +78,11 @@
   <section class="garden-feed">
     <div class="garden-feed-head">
       <div>
-        <p class="garden-eyebrow">Recent Writing</p>
-        <h2>最近的想法与笔记</h2>
+        <p class="garden-eyebrow">Latest Essays</p>
+        <h2>最新观点与长文</h2>
       </div>
       <p>
-        保留一些未完成感，持续生长，而不是一次性写成“终稿”。
+        不是碎片化表达，而是持续输出能沉淀为个人资产的判断与作品。
       </p>
     </div>
 

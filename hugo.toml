@@ -18,7 +18,7 @@ title = '查拉图的数字花园'
     weight = 1
 
 [params]
-  description = '记录科研、开发、阅读与思考。'
+  description = '发布关于哲学与思考、一人公司的观点文章与深度长文。'
   defaultTheme = 'auto'
   ShowReadingTime = true
   ShowShareButtons = true
@@ -35,11 +35,11 @@ title = '查拉图的数字花园'
     msapplication_TileColor = '#2e2e33'
 
 [[menu.main]]
-  name = '科研与开发'
-  url = '/posts/research/'
+  name = '哲学与思考'
+  url = '/posts/philosophy/'
   weight = 1
 
 [[menu.main]]
-  name = '阅读与思考'
-  url = '/posts/reading/'
+  name = '一人公司'
+  url = '/posts/solo-company/'
   weight = 2
