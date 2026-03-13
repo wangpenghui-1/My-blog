@@ -35,10 +35,8 @@
 仓库中的 `vercel.json` 固定了部署配置：
 
 - `framework = hugo`
-- `buildCommand = bash scripts/vercel-build.sh`
+- `buildCommand = hugo --gc --minify`
 - `outputDirectory = public`
-
-其中 `scripts/vercel-build.sh` 会在构建时固定下载并使用 Hugo `0.157.0`，并兼容 Hugo release 包的新旧命名，避免 Vercel 默认 Hugo 版本过旧导致主题构建失败。
 
 仓库内已经直接包含 `themes/PaperModLocal/`，部署不再依赖 Git submodule。
 

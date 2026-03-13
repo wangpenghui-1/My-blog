@@ -1,7 +1,6 @@
 .hugo_build.lock
 .codex-review-public/
 .vercel/
-.vercel-hugo/
 .hugo-server*.log
 public/
 resources/_gen/
