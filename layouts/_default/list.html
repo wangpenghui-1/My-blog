@@ -4,7 +4,7 @@
 {{- partial "index_profile.html" . }}
 {{- else }} {{/* if not profileMode */}}
 
-{{- if not .IsHome | and .Title }}
+{{- if and (not (and (eq .Kind "section") (not .IsHome))) (not .IsHome) .Title }}
 <header class="page-header">
   {{- partial "breadcrumbs.html" . }}
   <h1>
@@ -30,7 +30,7 @@
 </header>
 {{- end }}
 
-{{- if .Content }}
+{{- if and (not (and (eq .Kind "section") (not .IsHome))) .Content }}
 <div class="post-content">
   {{- if not (.Param "disableAnchoredHeadings") }}
   {{- partial "anchored_headings.html" .Content -}}
@@ -46,6 +46,7 @@
 {{- end }}
 
 {{- $paginator := .Paginate $pages }}
+{{- $isSectionList := and (eq .Kind "section") (not .IsHome) }}
 
 {{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
 {{- partial "home_info.html" . }}
@@ -53,6 +54,112 @@
 
 {{- $term := .Data.Term }}
 {{- $compactSectionCards := and (eq .Kind "section") (not .IsHome) }}
+{{- if $isSectionList }}
+{{- $sectionTone := "essay" -}}
+{{- $sectionDescriptor := "把这个栏目当成一份持续扩写的长文档案：每篇文章都回应一个具体问题，而不是制造信息噪音。" -}}
+{{- $sectionNote := "按时间倒序进入即可，也适合先从最新一篇文章切入，再回看这个栏目内部的脉络。" -}}
+{{- $sectionTopics := slice "长期判断" "写作方法" "个人秩序" -}}
+{{- if eq .RelPermalink "/posts/philosophy/" -}}
+  {{- $sectionTone = "philosophy" -}}
+  {{- $sectionDescriptor = "这里处理价值判断、生活秩序、人与技术的关系，以及那些需要长期咀嚼的问题。" -}}
+  {{- $sectionNote = "建议从最接近你当前困惑的问题切入，再顺着文章之间的隐性线索回看整个判断体系。" -}}
+  {{- $sectionTopics = slice "价值判断" "生活秩序" "人与技术" -}}
+{{- else if eq .RelPermalink "/posts/solo-company/" -}}
+  {{- $sectionTone = "solo" -}}
+  {{- $sectionDescriptor = "这里记录产品、经营与创作实践，把一人公司的日常动作整理成能复用的方法。" -}}
+  {{- $sectionNote = "适合从你最熟悉的实践问题进入，再回头看文章背后的结构和方法，而不是只看结论。" -}}
+  {{- $sectionTopics = slice "独立经营" "产品化输出" "个人品牌" -}}
+{{- end -}}
+{{- $featured := "" }}
+{{- if gt (len $paginator.Pages) 0 }}
+  {{- $featured = index $paginator.Pages 0 }}
+{{- end }}
+
+<div class="section-shell section-shell-editorial" data-tone="{{ $sectionTone }}">
+  <section class="section-hero section-hero-editorial" data-tone="{{ $sectionTone }}">
+    <div class="section-hero-copy">
+      {{- partial "breadcrumbs.html" . }}
+      <p class="garden-eyebrow">栏目档案 / Section Dossier</p>
+      <h1>{{ .Title }}</h1>
+      {{- if .Description }}
+      <p class="section-summary">{{ .Description }}</p>
+      {{- end }}
+      {{- if .Content }}
+      <div class="section-intro">
+        {{- .Content }}
+      </div>
+      {{- end }}
+      <div class="section-route">
+        <span class="section-route-label">适合从这些问题进入</span>
+        <div class="section-route-tags">
+          {{- range $sectionTopics }}
+          <span>{{ . }}</span>
+          {{- end }}
+        </div>
+      </div>
+    </div>
+
+    <aside class="section-hero-panel" data-tone="{{ $sectionTone }}">
+      <span class="section-panel-label">栏目笔记</span>
+      <p class="section-panel-lead">{{ $sectionDescriptor }}</p>
+      <div class="section-stat-grid">
+        <div>
+          <span>文章数量</span>
+          <strong>{{ len $pages }}</strong>
+        </div>
+        <div>
+          <span>表达形式</span>
+          <strong>Long-form Essays</strong>
+        </div>
+        <div>
+          <span>更新方式</span>
+          <strong>Slow / Curated</strong>
+        </div>
+      </div>
+      <div class="section-panel-note">
+        <span>阅读提示</span>
+        <p>{{ $sectionNote }}</p>
+      </div>
+
+      {{- with $featured }}
+      <a class="section-featured" href="{{ .RelPermalink }}">
+        <span class="section-featured-label">最新文章</span>
+        <h2>{{ .Title }}</h2>
+        <p>{{ .Summary | plainify | truncate 118 }}</p>
+        <span class="section-featured-meta">{{ .Date.Format "2006.01.02" }} · {{ .ReadingTime }} min</span>
+      </a>
+      {{- end }}
+    </aside>
+  </section>
+
+  <section class="section-stream">
+    <div class="section-stream-head">
+      <div>
+        <p class="garden-eyebrow">文章档案 / Writing Ledger</p>
+        <h2>栏目文章</h2>
+      </div>
+    </div>
+
+    <div class="section-post-grid">
+      {{- range $index, $page := $paginator.Pages }}
+      <a class="section-post-card section-card-link{{ if eq $index 0 }} section-post-card-emphasis{{ end }}" href="{{ .Permalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
+        <span class="section-post-index">{{ printf "%02d" (add $index 1) }}</span>
+        <div class="section-post-meta">
+          <span>{{ .Date | time.Format (default ":date_long" site.Params.DateFormat) }}</span>
+          <span>{{ .ReadingTime }} min</span>
+        </div>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+        <div class="section-post-footer">
+          <span>阅读全文</span>
+          <span>{{ with .CurrentSection }}{{ .Title }}{{ else }}Essay{{ end }}</span>
+        </div>
+      </a>
+      {{- end }}
+    </div>
+  </section>
+</div>
+{{- else }}
 {{- range $index, $page := $paginator.Pages }}
 
 {{- $class := "post-entry" }}
@@ -98,6 +205,7 @@
   {{- end }}
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
 </article>
+{{- end }}
 {{- end }}
 
 {{- if gt $paginator.TotalPages 1 }}
