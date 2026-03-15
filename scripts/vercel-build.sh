@@ -35,4 +35,6 @@ tar -xzf "${BUILD_DIR}/${downloaded_archive}" -C "${BUILD_DIR}"
 echo "Using Hugo binary:"
 "${BUILD_DIR}/hugo" version
 
+HUGO_BIN="${BUILD_DIR}/hugo" bash scripts/check-future-posts.sh
+
 HUGO_ENVIRONMENT=production "${BUILD_DIR}/hugo" --gc --minify
