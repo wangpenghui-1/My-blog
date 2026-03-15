@@ -51,9 +51,25 @@
       "problemMatcher": []
     },
     {
+      "label": "Check: Future Posts",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/check-future-posts.ps1",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "hugo-review",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Review: Production Build",
       "type": "shell",
-      "command": "hugo --gc --minify --destination .codex-review-public",
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/check-future-posts.ps1; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; hugo --gc --minify --destination .codex-review-public",
       "options": {
         "cwd": "${workspaceFolder}"
       },

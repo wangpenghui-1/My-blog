@@ -13,10 +13,13 @@
 2. 生成生产构建：
 
    ```bash
+   powershell -ExecutionPolicy Bypass -File scripts/check-future-posts.ps1
    hugo --gc --minify --destination .codex-review-public
    ```
 
 `public/` 是构建产物，不再提交到仓库。
+
+如果文章已经准备立即发布，请确保 `draft = false` 且 `date` / `publishDate` 不晚于当前时间；否则 Hugo 会把它当作未来文章排除在生产构建之外。
 
 ## Cursor 任务
 
@@ -25,6 +28,7 @@
 - `Preview: Hugo Dev Server`：启动本地开发服务器
 - `Preview: Open Local Site`：在系统浏览器打开 `http://localhost:1313/`
 - `Preview: Start + Open Browser`：先启动预览，再自动打开本地站点
+- `Check: Future Posts`：检查是否存在会被 Hugo 当成未来文章而跳过发布的内容
 - `Review: Production Build`：执行接近 Vercel 的生产构建，输出到 `.codex-review-public/`
 - `Clean: Review Output`：清理本地审查产物
 - `Content: New Post Draft`：输入文章路径后创建草稿
@@ -53,6 +57,8 @@
 仓库内已经直接包含 `themes/PaperModLocal/`，部署不再依赖 Git submodule。
 
 `scripts/vercel-build.sh` 会在 Vercel 构建时固定使用 Hugo `0.157.0`。这里故意不再声明 `framework = hugo`，避免 Vercel 自动注入较旧的 Hugo 版本。
+
+在真正执行 Hugo 构建之前，Vercel 会先运行 `scripts/check-future-posts.sh`。如果仓库里存在 `draft = false` 且 `date` / `publishDate` 仍在未来的文章，构建会直接失败，避免出现“部署成功但新文章线上仍然缺失”的情况。
 
 建议保持 GitHub Pages 关闭状态，避免和 Vercel 的自定义域名、HTTPS 校验以及生产流量接管相互冲突。
 
