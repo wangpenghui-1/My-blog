@@ -61,6 +61,121 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ── Theme transition: smooth color switch ── */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    color 0.45s ease,
+    background-color 0.45s ease,
+    background 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease !important;
+}
+
+/* ── Selection color ── */
+::selection {
+  background: rgba(153, 99, 61, 0.22);
+  color: var(--brand-ink);
+}
+
+:root[data-theme="dark"] ::selection {
+  background: rgba(216, 155, 103, 0.28);
+}
+
+/* ── Reading progress bar ── */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--brand-accent), var(--brand-moss));
+  z-index: 9999;
+  transition: width 0.12s linear;
+  pointer-events: none;
+}
+
+/* ── Entrance animations ── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.editorial-hero-main,
+.editorial-note,
+.editorial-lead-card,
+.editorial-side-card,
+.editorial-pullquote,
+.editorial-section-card,
+.editorial-ledger-item,
+.section-hero-copy,
+.section-hero-panel,
+.section-post-card,
+.essay-header,
+.essay-reading-main,
+.editorial-ledger-head,
+.garden-actions {
+  animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.editorial-hero-main { animation-delay: 0.05s; }
+.editorial-note { animation-delay: 0.15s; }
+.editorial-lead-card { animation-delay: 0.1s; }
+.editorial-side-card:nth-child(1) { animation-delay: 0.18s; }
+.editorial-side-card:nth-child(2) { animation-delay: 0.25s; }
+.editorial-pullquote { animation-delay: 0.3s; }
+.editorial-section-card:nth-child(1) { animation-delay: 0.08s; }
+.editorial-section-card:nth-child(2) { animation-delay: 0.16s; }
+.editorial-ledger-head { animation-delay: 0.05s; }
+.editorial-ledger-item:nth-child(1) { animation-delay: 0.08s; }
+.editorial-ledger-item:nth-child(2) { animation-delay: 0.14s; }
+.editorial-ledger-item:nth-child(3) { animation-delay: 0.2s; }
+.editorial-ledger-item:nth-child(4) { animation-delay: 0.26s; }
+.editorial-ledger-item:nth-child(5) { animation-delay: 0.32s; }
+.editorial-ledger-item:nth-child(6) { animation-delay: 0.38s; }
+.section-hero-copy { animation-delay: 0.05s; }
+.section-hero-panel { animation-delay: 0.15s; }
+.section-post-card:nth-child(1) { animation-delay: 0.08s; }
+.section-post-card:nth-child(2) { animation-delay: 0.14s; }
+.section-post-card:nth-child(3) { animation-delay: 0.2s; }
+.section-post-card:nth-child(4) { animation-delay: 0.26s; }
+.essay-header { animation-delay: 0.05s; }
+.essay-reading-main { animation-delay: 0.15s; }
+.garden-actions { animation-delay: 0.22s; }
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .editorial-hero-main,
+  .editorial-note,
+  .editorial-lead-card,
+  .editorial-side-card,
+  .editorial-pullquote,
+  .editorial-section-card,
+  .editorial-ledger-item,
+  .section-hero-copy,
+  .section-hero-panel,
+  .section-post-card,
+  .essay-header,
+  .essay-reading-main,
+  .editorial-ledger-head,
+  .garden-actions {
+    animation: none;
+  }
+}
+
 body,
 .list {
   background:
@@ -130,6 +245,16 @@ button {
   z-index: 40;
   padding: 22px 24px 0;
   background: transparent;
+  transition: padding 0.35s ease;
+}
+
+.header.header-scrolled .nav {
+  padding: 12px 22px;
+  box-shadow: 0 12px 40px rgba(17, 20, 25, 0.10);
+}
+
+.header.header-scrolled {
+  padding-top: 14px;
 }
 
 .header-reading {
@@ -212,6 +337,7 @@ button {
   background: rgba(255, 251, 245, 0.58);
   box-shadow: var(--brand-shadow);
   backdrop-filter: blur(18px);
+  transition: padding 0.35s ease, box-shadow 0.35s ease;
 }
 
 :root[data-theme="dark"] .nav {
@@ -923,20 +1049,42 @@ button {
   line-height: 1.12;
 }
 
-.editorial-lead-card:hover,
-.editorial-side-card:hover,
-.editorial-section-card:hover,
-.editorial-ledger-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--brand-line-strong);
-  background: var(--brand-surface-strong);
-  box-shadow: 0 28px 76px rgba(17, 20, 25, 0.12);
-}
-
 .editorial-lead-card,
 .editorial-side-card,
 .editorial-ledger-item {
   cursor: pointer;
+  transition:
+    transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-section-card {
+  transition:
+    transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-lead-card:hover,
+.editorial-side-card:hover,
+.editorial-section-card:hover,
+.editorial-ledger-item:hover {
+  transform: translateY(-5px) scale(1.008);
+  border-color: var(--brand-line-strong);
+  background: var(--brand-surface-strong);
+  box-shadow:
+    0 28px 76px rgba(17, 20, 25, 0.10),
+    0 4px 12px rgba(17, 20, 25, 0.06);
+}
+
+.editorial-lead-card:active,
+.editorial-side-card:active,
+.editorial-ledger-item:active {
+  transform: translateY(-2px) scale(1.002);
+  transition-duration: 0.1s;
 }
 
 .editorial-section-card:hover {
@@ -1137,12 +1285,23 @@ button {
   color: var(--brand-ink);
   font-size: 0.94rem;
   font-weight: 700;
+  transition:
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.24s ease,
+    background 0.24s ease,
+    box-shadow 0.32s ease;
 }
 
 .garden-pill:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--brand-line-strong);
   background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 8px 24px rgba(17, 20, 25, 0.08);
+}
+
+.garden-pill:active {
+  transform: translateY(-1px);
+  transition-duration: 0.1s;
 }
 
 :root[data-theme="dark"] .garden-pill:hover {
@@ -1256,14 +1415,35 @@ button {
   pointer-events: none;
 }
 
+.garden-focus-card,
+.garden-post-item,
+.section-post-card,
+.section-featured {
+  transition:
+    transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .garden-focus-card:hover,
 .garden-post-item:hover,
 .section-post-card:hover,
 .section-featured:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px) scale(1.008);
   border-color: var(--brand-line-strong);
   background: var(--brand-surface-strong);
-  box-shadow: 0 28px 76px rgba(17, 20, 25, 0.12);
+  box-shadow:
+    0 28px 76px rgba(17, 20, 25, 0.10),
+    0 4px 12px rgba(17, 20, 25, 0.06);
+}
+
+.garden-focus-card:active,
+.garden-post-item:active,
+.section-post-card:active,
+.section-featured:active {
+  transform: translateY(-2px) scale(1.002);
+  transition-duration: 0.1s;
 }
 
 .garden-focus-card h2,
@@ -1840,6 +2020,12 @@ button {
   border-radius: 18px;
   border: 1px solid var(--brand-line);
   box-shadow: var(--brand-shadow);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.post-content img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 20px 60px rgba(17, 20, 25, 0.12);
 }
 
 .post-content hr {
@@ -2033,10 +2219,19 @@ button {
   background: rgba(25, 29, 35, 0.82);
 }
 
+.paginav-card {
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.35s ease;
+}
+
 .paginav-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--brand-line-strong);
   background: var(--brand-surface-strong);
+  box-shadow: 0 16px 48px rgba(17, 20, 25, 0.08);
 }
 
 .pagination a {
@@ -2129,6 +2324,45 @@ button {
   border: 1px solid var(--brand-line);
   border-radius: 999px;
   background: var(--brand-surface-strong);
+  backdrop-filter: blur(14px);
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.top-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(17, 20, 25, 0.12);
+  border-color: var(--brand-line-strong);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(23, 26, 31, 0.15);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(23, 26, 31, 0.28);
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(244, 236, 223, 0.12);
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(244, 236, 223, 0.24);
 }
 
 @media screen and (max-width: 1080px) {
@@ -2267,5 +2501,66 @@ button {
 
   .nav-tagline {
     white-space: normal;
+  }
+
+  /* Better touch targets on mobile */
+  #menu a,
+  .reading-header-link {
+    min-height: 44px;
+    padding: 0 1rem;
+  }
+
+  #theme-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Disable hover lift on touch devices to avoid sticky hover */
+  .editorial-lead-card:hover,
+  .editorial-side-card:hover,
+  .editorial-section-card:hover,
+  .editorial-ledger-item:hover,
+  .garden-focus-card:hover,
+  .garden-post-item:hover,
+  .section-post-card:hover,
+  .section-featured:hover {
+    transform: none;
+  }
+
+  /* Slightly larger tap areas for footer links */
+  .footer a {
+    padding: 0.2rem 0;
+  }
+
+  /* Better readability on small screens */
+  .post-content {
+    font-size: 1.12rem;
+    line-height: 2;
+  }
+
+  .editorial-title {
+    font-size: clamp(2.6rem, 10vw, 4rem);
+  }
+
+  /* Smoother edge-to-edge cards */
+  .editorial-ledger-grid {
+    gap: 0.75rem;
+  }
+}
+
+/* Touch device hover fix */
+@media (hover: none) {
+  .editorial-lead-card:hover,
+  .editorial-side-card:hover,
+  .editorial-section-card:hover,
+  .editorial-ledger-item:hover,
+  .garden-focus-card:hover,
+  .garden-post-item:hover,
+  .section-post-card:hover,
+  .section-featured:hover,
+  .garden-pill:hover,
+  .paginav-card:hover {
+    transform: none;
+    box-shadow: var(--brand-shadow);
   }
 }
