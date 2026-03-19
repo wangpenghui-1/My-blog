@@ -613,7 +613,6 @@ button {
 .footer-inner,
 .toc,
 .post-content blockquote,
-.post-content pre,
 .entry-cover img,
 .section-featured {
   border: 1px solid var(--border);
@@ -1186,6 +1185,86 @@ button {
 .post-content pre {
   border-radius: var(--radius);
   overflow: hidden;
+}
+
+.post-content .highlight {
+  position: relative;
+  margin: 1rem 0 1.5rem;
+  border: 1px solid rgba(99, 102, 241, 0.14);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #16181d 0%, #0f1115 100%) !important;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.post-content .highlight pre,
+.post-content .highlight .chroma {
+  margin: 0;
+  background: transparent !important;
+}
+
+.post-content .highlight pre {
+  padding: 1rem 0;
+}
+
+.post-content .highlight code,
+.post-content .highlight pre code,
+.post-content .highlight .chroma code {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent !important;
+  color: inherit;
+  font-size: 0.86rem;
+  line-height: 1.72;
+  word-break: normal;
+}
+
+.post-content .highlight .line {
+  min-height: 1.72em;
+}
+
+.post-content .highlight .line .cl,
+.post-content .highlight .ln {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.post-content .highlight .ln {
+  color: #6b7280;
+}
+
+.post-content .highlight .chroma .c,
+.post-content .highlight .chroma .c1,
+.post-content .highlight .chroma .cm,
+.post-content .highlight .chroma .cp,
+.post-content .highlight .chroma .cs {
+  color: #7c8599;
+}
+
+.post-content pre > code:not([class]) {
+  display: block;
+  padding: 1.15rem 1.25rem;
+  color: var(--text-h);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--bg-primary) 92%, transparent), var(--code-block-bg));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  font-size: clamp(0.76rem, 1.05vw, 0.94rem);
+  line-height: 1.6;
+  letter-spacing: 0;
+  white-space: pre;
+  word-break: normal;
+  overflow-x: auto;
+}
+
+:root[data-theme="light"] .post-content pre > code:not([class]) {
+  color: var(--text-body);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 244, 246, 0.96));
+  border-color: var(--border-strong);
 }
 
 /* ================================================================
@@ -3069,4 +3148,69 @@ body.is-home .main {
     transform: none;
     box-shadow: var(--cover-shadow);
   }
+}
+
+/* Final code-block overrides to keep light theme readable */
+:root[data-theme="light"] .post-content .highlight {
+  border-color: rgba(23, 26, 31, 0.14);
+  background: linear-gradient(180deg, #1f232b 0%, #15181e 100%) !important;
+  box-shadow: 0 18px 40px rgba(17, 20, 25, 0.12);
+}
+
+:root[data-theme="light"] .post-content .highlight pre,
+:root[data-theme="light"] .post-content .highlight .chroma,
+:root[data-theme="light"] .post-content .highlight code,
+:root[data-theme="light"] .post-content .highlight pre code {
+  background: transparent !important;
+  color: #e7ecf3;
+}
+
+:root[data-theme="light"] .post-content .highlight .chroma .gh,
+:root[data-theme="light"] .post-content .highlight .chroma .gu,
+:root[data-theme="light"] .post-content .highlight .chroma .nn,
+:root[data-theme="light"] .post-content .highlight .chroma .nc,
+:root[data-theme="light"] .post-content .highlight .chroma .ne,
+:root[data-theme="light"] .post-content .highlight .chroma .py,
+:root[data-theme="light"] .post-content .highlight .chroma .m,
+:root[data-theme="light"] .post-content .highlight .chroma .mb,
+:root[data-theme="light"] .post-content .highlight .chroma .mf,
+:root[data-theme="light"] .post-content .highlight .chroma .mh,
+:root[data-theme="light"] .post-content .highlight .chroma .mi,
+:root[data-theme="light"] .post-content .highlight .chroma .mo {
+  color: #ffb38a;
+}
+
+:root[data-theme="light"] .post-content .highlight .chroma .k,
+:root[data-theme="light"] .post-content .highlight .chroma .kp,
+:root[data-theme="light"] .post-content .highlight .chroma .kr,
+:root[data-theme="light"] .post-content .highlight .chroma .kt,
+:root[data-theme="light"] .post-content .highlight .chroma .nt {
+  color: #d6b3ff;
+}
+
+:root[data-theme="light"] .post-content .highlight .chroma .na,
+:root[data-theme="light"] .post-content .highlight .chroma .nf,
+:root[data-theme="light"] .post-content .highlight .chroma .fm,
+:root[data-theme="light"] .post-content .highlight .chroma .dl {
+  color: #8fc7ff;
+}
+
+:root[data-theme="light"] .post-content .highlight .chroma .s,
+:root[data-theme="light"] .post-content .highlight .chroma .s1,
+:root[data-theme="light"] .post-content .highlight .chroma .s2,
+:root[data-theme="light"] .post-content .highlight .chroma .sb,
+:root[data-theme="light"] .post-content .highlight .chroma .sc,
+:root[data-theme="light"] .post-content .highlight .chroma .si,
+:root[data-theme="light"] .post-content .highlight .chroma .sx,
+:root[data-theme="light"] .post-content .highlight .chroma .ss {
+  color: #b9e59f;
+}
+
+:root[data-theme="light"] .post-content .highlight .chroma .c,
+:root[data-theme="light"] .post-content .highlight .chroma .c1,
+:root[data-theme="light"] .post-content .highlight .chroma .cm,
+:root[data-theme="light"] .post-content .highlight .chroma .cp,
+:root[data-theme="light"] .post-content .highlight .chroma .cs,
+:root[data-theme="light"] .post-content .highlight .ln {
+  color: #8a93a5;
 }

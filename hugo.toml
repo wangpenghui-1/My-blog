@@ -26,6 +26,12 @@ title = '查拉图的数字花园'
   ShowPostNavLinks = true
   ShowToc = true
 
+[markup]
+  [markup.highlight]
+    codeFences = true
+    noClasses = false
+    style = 'catppuccin-macchiato'
+
   [params.assets]
     favicon = 'favicon-32x32.png'
     favicon16x16 = 'favicon-16x16.png'
