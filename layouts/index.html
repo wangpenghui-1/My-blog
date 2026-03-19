@@ -50,6 +50,28 @@
               {{ end }}
               <a class="cover-nav-link" href="#cover-archive">近期档案</a>
             </nav>
+            {{- if (not site.Params.disableThemeToggle) }}
+            <button class="cover-theme-toggle" data-theme-toggle accesskey="t" title="(Alt + T)" aria-label="切换主题">
+              <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+              <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </button>
+            {{- end }}
             {{ with $lead }}
             <a class="cover-cta" href="{{ .RelPermalink }}">
               <span>开始阅读</span>
@@ -172,22 +194,11 @@
   </section>
 
   <section class="cover-story-shell">
-    <div class="cover-story-intro">
-      <div>
-        <p class="cover-section-kicker">Behind the Garden</p>
-        <h2 class="cover-balanced-title cover-balanced-title-story" aria-label="把现实中的模糊、焦虑和野心，改写成可复用的文字结构。">
-          <span class="cover-balanced-line">把现实中的模糊与</span>
-          <span class="cover-balanced-line">焦虑和野心改写成</span>
-          <span class="cover-balanced-line">可复用的文字结构</span>
-        </h2>
-      </div>
-      <div class="cover-story-copy">
-        <p>这里的首页不是内容流入口，而是一张封面。它先说明你会遇到什么问题、什么语气、什么判断强度，然后才邀请你进入文章。</p>
-        {{ with $lead }}
-        <a class="cover-inline-link" href="{{ .RelPermalink }}">先从本期主文开始</a>
-        {{ end }}
-      </div>
+    {{ with $lead }}
+    <div class="cover-story-copy">
+      <a class="cover-inline-link" href="{{ .RelPermalink }}">先从本期主文开始</a>
     </div>
+    {{ end }}
 
     <div class="cover-feature-grid">
       {{ with $lead }}
@@ -301,7 +312,6 @@
         <p class="cover-section-kicker">Archive Ledger</p>
         <h2>近期写作档案</h2>
       </div>
-      <p>保留首页的封面感，同时让最近写作仍然可以一眼扫到。</p>
     </div>
 
     <div class="cover-archive-grid">
