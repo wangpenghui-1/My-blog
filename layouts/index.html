@@ -13,7 +13,7 @@
   {{ $lead = index $recent 0 }}
 {{ end }}
 {{ if gt (len $recent) 1 }}
-  {{ $spotlights = first 2 (after 1 $recent) }}
+  {{ $spotlights = first 3 (after 1 $recent) }}
 {{ end }}
 
 {{ with $philosophy }}
@@ -30,214 +30,290 @@
   {{ end }}
 {{ end }}
 
-<div class="garden-home garden-home-editorial">
-  <section class="editorial-hero">
-    <div class="editorial-hero-main">
-      <p class="garden-eyebrow">本期首页 / Editorial Issue</p>
-      <h1 class="editorial-title" aria-label="把哲学的追问与一人公司的实践编成一本长期的个人刊物">
-        <span class="editorial-title-line">把哲学的追问</span>
-        <span class="editorial-title-line">与一人公司的</span>
-        <span class="editorial-title-line">实践编成一本</span>
-        <span class="editorial-title-line">长期的个人刊物</span>
-      </h1>
-      <p class="editorial-deck">
-        {{ site.Params.description }}
-        这里不是一个追求高频更新的首页，而是一份持续发行的个人刊物：首页优先呈现本期主文章、栏目线索与近期档案。
-      </p>
-      <div class="garden-actions">
-        <a class="garden-pill garden-pill-primary" href="/posts/philosophy/">阅读哲学与思考</a>
-        <a class="garden-pill" href="/posts/solo-company/">阅读一人公司</a>
+<div class="cover-home">
+  <section class="cover-shell">
+    <div class="cover-stage">
+      <div class="cover-hero-panel">
+        <header class="cover-topbar">
+          <a class="cover-brand" href="{{ site.Home.RelPermalink }}" aria-label="返回首页">
+            <span class="cover-brand-mark">CZ</span>
+            <span class="cover-brand-copy">
+              <strong>{{ site.Title }}</strong>
+              <span>Personal Essays / Digital Garden</span>
+            </span>
+          </a>
+
+          <div class="cover-topbar-actions">
+            <nav class="cover-nav" aria-label="首页导航">
+              {{ range site.Menus.main }}
+              <a class="cover-nav-link" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+              {{ end }}
+              <a class="cover-nav-link" href="#cover-archive">近期档案</a>
+            </nav>
+            {{ with $lead }}
+            <a class="cover-cta" href="{{ .RelPermalink }}">
+              <span>开始阅读</span>
+              <span aria-hidden="true">&#8594;</span>
+            </a>
+            {{ end }}
+          </div>
+        </header>
+
+        <div class="cover-hero-grid">
+          <div class="cover-hero-copy">
+            <p class="cover-eyebrow">独立作者 / Philosophy / Solo Company</p>
+            <h1 class="cover-title" aria-label="查拉图的数字花园">
+              <span class="cover-title-small">查拉图的</span>
+              <span class="cover-title-large">
+                <span class="cover-title-line cover-title-line-top">
+                  <span class="cover-title-glyph">数</span>
+                  <span class="cover-title-glyph">字</span>
+                </span>
+                <span class="cover-title-line cover-title-line-bottom">
+                  <span class="cover-title-glyph">花</span>
+                  <span class="cover-title-glyph">园</span>
+                </span>
+              </span>
+            </h1>
+            <p class="cover-deck">
+              {{ site.Params.description }}
+              这里用长文整理判断，用栏目沉淀问题，把个人博客写成一份持续扩展的思想与实践封面。
+            </p>
+            <div class="cover-actions">
+              <a class="cover-pill cover-pill-primary" href="/posts/philosophy/">进入哲学与思考</a>
+              <a class="cover-pill" href="/posts/solo-company/">进入一人公司</a>
+              {{ with $lead }}
+              <a class="cover-pill" href="{{ .RelPermalink }}">本期主文</a>
+              {{ end }}
+            </div>
+          </div>
+
+          <div class="cover-hero-side">
+            <div class="cover-visual" aria-hidden="true">
+              <div class="cover-orbit cover-orbit-one"></div>
+              <div class="cover-orbit cover-orbit-two"></div>
+              <div class="cover-figure">
+                <span class="cover-figure-head"></span>
+                <span class="cover-figure-body"></span>
+                <span class="cover-figure-shadow"></span>
+              </div>
+              <div class="cover-quote-card">
+                <span class="cover-note-label">写作信条</span>
+                <p>让博客不是时间线，而是一套逐步成形的立场系统。</p>
+                <span class="cover-quote-foot">Slow essays. Strong positions.</span>
+              </div>
+            </div>
+
+            <div class="cover-manifest">
+              <span class="cover-note-label">封面说明</span>
+              <h2 class="cover-balanced-title cover-balanced-title-manifest" aria-label="用文字把不确定的时代切成可判断的结构。">
+                <span class="cover-balanced-line">用文字把不确定时代</span>
+                <span class="cover-balanced-line">切成可判断的结构</span>
+              </h2>
+              <p>从哲学问题出发，在一人公司实践里验证，再把经验压缩成可回看的方法与表达。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-track-grid">
+          <article class="cover-track-card">
+            <span class="cover-track-index">#01</span>
+            <strong>{{ with $philosophy }}{{ .Title }}{{ else }}哲学与思考{{ end }}</strong>
+            <p>价值判断、生活秩序、人与技术</p>
+          </article>
+          <article class="cover-track-card">
+            <span class="cover-track-index">#02</span>
+            <strong>{{ with $soloCompany }}{{ .Title }}{{ else }}一人公司{{ end }}</strong>
+            <p>产品化输出、独立经营、个人品牌</p>
+          </article>
+          <article class="cover-track-card">
+            <span class="cover-track-index">#03</span>
+            <strong>{{ len site.RegularPages }} 篇长文档案</strong>
+            <p>主页优先展示最近形成的判断与问题意识</p>
+          </article>
+          <article class="cover-track-card">
+            <span class="cover-track-index">#04</span>
+            <strong>Slow / Curated / Archive-first</strong>
+            <p>先建立判断，再组织表达，不为频率牺牲质量</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="cover-band">
+        <p class="cover-band-title">阅读路径</p>
+        <div class="cover-band-list">
+          <div class="cover-band-item">
+            <span class="cover-band-dot"></span>
+            <strong>{{ $philosophyCount }}</strong>
+            <span>哲学文章</span>
+          </div>
+          <div class="cover-band-item">
+            <span class="cover-band-dot"></span>
+            <strong>{{ $soloCount }}</strong>
+            <span>实践文章</span>
+          </div>
+          <div class="cover-band-item">
+            <span class="cover-band-dot"></span>
+            {{ with $lead }}
+            <strong>{{ .Date.Format "2006.01.02" }}</strong>
+            {{ else }}
+            <strong>待更新</strong>
+            {{ end }}
+            <span>最近更新</span>
+          </div>
+          <div class="cover-band-item">
+            <span class="cover-band-dot"></span>
+            <strong>2 条主线</strong>
+            <span>抽象判断与具体实践</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cover-story-shell">
+    <div class="cover-story-intro">
+      <div>
+        <p class="cover-section-kicker">Behind the Garden</p>
+        <h2 class="cover-balanced-title cover-balanced-title-story" aria-label="把现实中的模糊、焦虑和野心，改写成可复用的文字结构。">
+          <span class="cover-balanced-line">把现实中的模糊与</span>
+          <span class="cover-balanced-line">焦虑和野心改写成</span>
+          <span class="cover-balanced-line">可复用的文字结构</span>
+        </h2>
+      </div>
+      <div class="cover-story-copy">
+        <p>这里的首页不是内容流入口，而是一张封面。它先说明你会遇到什么问题、什么语气、什么判断强度，然后才邀请你进入文章。</p>
         {{ with $lead }}
-        <a class="garden-pill" href="{{ .RelPermalink }}">本期主文章</a>
+        <a class="cover-inline-link" href="{{ .RelPermalink }}">先从本期主文开始</a>
         {{ end }}
       </div>
     </div>
 
-    <aside class="editorial-note">
-      <span class="editorial-note-label">编者按</span>
-      <p class="editorial-note-lead">
-        这里不是信息流，而是一份持续发行的个人刊物。更新频率可以慢，但每一篇都应当留下明确的判断、语气与方法。
-      </p>
-      <div class="editorial-note-list">
-        <div>
-          <span>写作标准</span>
-          <strong>先形成判断，再组织表达</strong>
-        </div>
-        <div>
-          <span>阅读方式</span>
-          <strong>可从主文章切入，也可按栏目进入</strong>
-        </div>
-        <div>
-          <span>本期焦点</span>
-          <strong>人与 AI 的关系，和独立实践的结构</strong>
-        </div>
-      </div>
-      <div class="editorial-note-grid">
-        <div>
-          <span>最近更新</span>
-          {{ with $lead }}
-          <strong>{{ .Date.Format "2006.01.02" }}</strong>
-          {{ else }}
-          <strong>待添加</strong>
-          {{ end }}
-        </div>
-        <div>
-          <span>长文总数</span>
-          <strong>{{ len site.RegularPages }}</strong>
-        </div>
-        <div>
-          <span>栏目数</span>
-          <strong>2</strong>
-        </div>
-        <div>
-          <span>出版节奏</span>
-          <strong>Slow / Curated</strong>
-        </div>
-      </div>
-    </aside>
-  </section>
-
-  <section class="editorial-feature-grid">
-    {{ with $lead }}
-    <a class="editorial-lead-card editorial-card-link" href="{{ .RelPermalink }}" aria-label="阅读主文章：{{ .Title | plainify }}">
-      <div class="editorial-meta-line">
-        <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Lead Essay{{ end }}</span>
-        <span>{{ .Date.Format "2006.01.02" }}</span>
-        <span>{{ .ReadingTime }} min</span>
-      </div>
-      <div class="editorial-lead-copy">
-        <span class="editorial-kicker">本期主文</span>
-        <h2>{{ .Title }}</h2>
-        <p>{{ .Summary | plainify | truncate 170 }}</p>
-      </div>
-      <div class="editorial-lead-footer">
-        <span>阅读全文</span>
-        <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Lead Essay{{ end }}</span>
-      </div>
-    </a>
-    {{ end }}
-
-    <div class="editorial-side-stack">
-      {{ range $spotlights }}
-      <a class="editorial-side-card editorial-card-link" href="{{ .RelPermalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
-        <div class="editorial-meta-line">
-          <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Essay{{ end }}</span>
+    <div class="cover-feature-grid">
+      {{ with $lead }}
+      <a class="cover-lead-card" href="{{ .RelPermalink }}" aria-label="阅读主文章：{{ .Title | plainify }}">
+        <div class="cover-card-meta">
+          <span>Lead Essay</span>
           <span>{{ .Date.Format "2006.01.02" }}</span>
-        </div>
-        <h3>{{ .Title }}</h3>
-        <p>{{ .Summary | plainify | truncate 92 }}</p>
-        <div class="editorial-side-footer">
           <span>{{ .ReadingTime }} min</span>
-          <span>进入正文</span>
+        </div>
+        <div class="cover-lead-copy">
+          <span class="cover-note-label">本期主文</span>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Summary | plainify | truncate 180 }}</p>
+        </div>
+        <div class="cover-card-foot">
+          <span>阅读全文</span>
+          <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Essay{{ end }}</span>
         </div>
       </a>
       {{ end }}
 
-      <article class="editorial-pullquote">
-        <span class="editorial-note-label">本期命题</span>
-        <p>用长文建立判断，用作品建立信任；让内容既能表达立场，也能沉淀方法。</p>
-      </article>
+      <div class="cover-side-stack">
+        {{ range $spotlights }}
+        <a class="cover-side-card" href="{{ .RelPermalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
+          <div class="cover-card-meta">
+            <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Essay{{ end }}</span>
+            <span>{{ .Date.Format "2006.01.02" }}</span>
+          </div>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Summary | plainify | truncate 84 }}</p>
+          <div class="cover-card-foot">
+            <span>{{ .ReadingTime }} min</span>
+            <span>进入正文</span>
+          </div>
+        </a>
+        {{ end }}
+
+        <article class="cover-side-card cover-side-card-quote">
+          <span class="cover-note-label">写作命题</span>
+          <p>用长期写作沉淀方法，用栏目结构降低读者进入门槛。</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="editorial-section-map">
-    <article class="editorial-section-card" data-tone="philosophy">
-      <div class="editorial-section-top">
-        <span class="editorial-section-index">01</span>
-        <span class="editorial-section-label">栏目档案</span>
+  <section class="cover-section-shell">
+    <article class="cover-section-card" data-tone="philosophy">
+      <div class="cover-section-top">
+        <span class="cover-section-index">01</span>
+        <span class="cover-note-label">栏目档案</span>
       </div>
-      <h2>
-        <a class="editorial-section-title-link" href="/posts/philosophy/">{{ with $philosophy }}{{ .Title }}{{ else }}哲学与思考{{ end }}</a>
-      </h2>
+      <h2><a href="/posts/philosophy/">{{ with $philosophy }}{{ .Title }}{{ else }}哲学与思考{{ end }}</a></h2>
       <p>{{ with $philosophy }}{{ .Description }}{{ else }}讨论哲学问题、价值判断、生活秩序与长期思考。{{ end }}</p>
-      <div class="editorial-section-path">
-        <span>适合从这些问题进入</span>
-        <div class="editorial-section-tags">
-          <span>价值判断</span>
-          <span>生活秩序</span>
-          <span>人与技术</span>
-        </div>
+      <div class="cover-section-tags">
+        <span>价值判断</span>
+        <span>生活秩序</span>
+        <span>人与技术</span>
       </div>
-      <div class="editorial-section-stats">
+      <div class="cover-section-stats">
         <div>
           <span>文章数量</span>
           <strong>{{ $philosophyCount }}</strong>
         </div>
         <div>
-          <span>栏目色调</span>
-          <strong>冷灰 / 墨绿</strong>
+          <span>阅读入口</span>
+          <strong>从主问题出发</strong>
         </div>
       </div>
       {{ with $philosophyLatest }}
-      <div class="editorial-section-latest">
+      <div class="cover-section-latest">
         <span>最新文章</span>
-        <strong><a class="editorial-section-latest-link" href="{{ .RelPermalink }}">{{ .Title }}</a></strong>
+        <strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong>
       </div>
       {{ end }}
-      <div class="editorial-section-footer">
-        <a href="/posts/philosophy/">进入栏目档案</a>
-        <span>从主问题出发</span>
-      </div>
     </article>
 
-    <article class="editorial-section-card" data-tone="solo">
-      <div class="editorial-section-top">
-        <span class="editorial-section-index">02</span>
-        <span class="editorial-section-label">栏目档案</span>
+    <article class="cover-section-card" data-tone="solo">
+      <div class="cover-section-top">
+        <span class="cover-section-index">02</span>
+        <span class="cover-note-label">栏目档案</span>
       </div>
-      <h2>
-        <a class="editorial-section-title-link" href="/posts/solo-company/">{{ with $soloCompany }}{{ .Title }}{{ else }}一人公司{{ end }}</a>
-      </h2>
+      <h2><a href="/posts/solo-company/">{{ with $soloCompany }}{{ .Title }}{{ else }}一人公司{{ end }}</a></h2>
       <p>{{ with $soloCompany }}{{ .Description }}{{ else }}记录产品、商业、创作与独立经营的实践判断。{{ end }}</p>
-      <div class="editorial-section-path">
-        <span>适合从这些问题进入</span>
-        <div class="editorial-section-tags">
-          <span>独立经营</span>
-          <span>产品化输出</span>
-          <span>个人品牌</span>
-        </div>
+      <div class="cover-section-tags">
+        <span>独立经营</span>
+        <span>产品化输出</span>
+        <span>个人品牌</span>
       </div>
-      <div class="editorial-section-stats">
+      <div class="cover-section-stats">
         <div>
           <span>文章数量</span>
           <strong>{{ $soloCount }}</strong>
         </div>
         <div>
-          <span>栏目色调</span>
-          <strong>铜棕 / 暖米</strong>
+          <span>阅读入口</span>
+          <strong>从实践路径出发</strong>
         </div>
       </div>
       {{ with $soloLatest }}
-      <div class="editorial-section-latest">
+      <div class="cover-section-latest">
         <span>最新文章</span>
-        <strong><a class="editorial-section-latest-link" href="{{ .RelPermalink }}">{{ .Title }}</a></strong>
+        <strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong>
       </div>
       {{ end }}
-      <div class="editorial-section-footer">
-        <a href="/posts/solo-company/">进入栏目档案</a>
-        <span>从实践路径出发</span>
-      </div>
     </article>
   </section>
 
-  <section class="editorial-ledger">
-    <div class="editorial-ledger-head">
+  <section id="cover-archive" class="cover-archive-shell">
+    <div class="cover-archive-head">
       <div>
-        <p class="garden-eyebrow">近期档案 / Archive Ledger</p>
+        <p class="cover-section-kicker">Archive Ledger</p>
         <h2>近期写作档案</h2>
       </div>
+      <p>保留首页的封面感，同时让最近写作仍然可以一眼扫到。</p>
     </div>
 
-    <div class="editorial-ledger-grid">
+    <div class="cover-archive-grid">
       {{ range $index, $page := $recent }}
-      <a class="editorial-ledger-item editorial-card-link{{ if eq $index 0 }} editorial-ledger-item-emphasis{{ end }}" href="{{ .RelPermalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
-        <div class="editorial-ledger-top">
-          <span class="editorial-ledger-index">{{ printf "%02d" (add $index 1) }}</span>
+      <a class="cover-archive-item{{ if eq $index 0 }} cover-archive-item-featured{{ end }}" href="{{ .RelPermalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
+        <div class="cover-card-meta">
+          <span>{{ printf "%02d" (add $index 1) }}</span>
           <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Essay{{ end }}</span>
         </div>
         <h3>{{ .Title }}</h3>
-        <p>{{ .Summary | plainify | truncate 118 }}</p>
-        <div class="editorial-ledger-foot">
+        <p>{{ .Summary | plainify | truncate 116 }}</p>
+        <div class="cover-card-foot">
           <span>{{ .Date.Format "2006.01.02" }}</span>
           <span>{{ .ReadingTime }} min</span>
         </div>

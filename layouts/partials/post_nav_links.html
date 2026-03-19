@@ -3,13 +3,17 @@
 <nav class="paginav paginav-editorial" aria-label="文章前后导航">
   {{- with $pages.Next . }}
   <a class="paginav-card prev" href="{{ .Permalink }}">
-    <span class="paginav-label">上一篇</span>
+    <span class="paginav-meta">
+      <span class="paginav-label">上一篇</span>
+    </span>
     <strong class="paginav-name">{{ .Name }}</strong>
   </a>
   {{- end }}
   {{- with $pages.Prev . }}
   <a class="paginav-card next" href="{{ .Permalink }}">
-    <span class="paginav-label">下一篇</span>
+    <span class="paginav-meta">
+      <span class="paginav-label">下一篇</span>
+    </span>
     <strong class="paginav-name">{{ .Name }}</strong>
   </a>
   {{- end }}

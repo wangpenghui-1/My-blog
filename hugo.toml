@@ -20,7 +20,7 @@ title = '查拉图的数字花园'
 [params]
   description = '发布关于哲学与思考、一人公司的观点文章与深度长文。'
   DateFormat = '2006.01.02'
-  defaultTheme = 'auto'
+  defaultTheme = 'dark'
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
