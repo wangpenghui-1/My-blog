@@ -16,11 +16,14 @@
     {{- partial "head.html" . }}
 </head>
 
+{{- $bodyClasses := slice }}
 {{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) }}
-<body class="list" id="top">
-{{- else }}
-<body id="top">
+    {{- $bodyClasses = $bodyClasses | append "list" }}
 {{- end }}
+{{- if .IsHome }}
+    {{- $bodyClasses = $bodyClasses | append "is-home" }}
+{{- end }}
+<body{{ if gt (len $bodyClasses) 0 }} class="{{ delimit $bodyClasses " " }}"{{ end }} id="top">
     {{ partialCached "header.html" . .Page -}}
     <main class="main">
         {{- block "main" . }}{{ end }}
