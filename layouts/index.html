@@ -56,7 +56,7 @@
 </section>
 
 {{- /* Article List Section */}}
-{{- $pages := where site.RegularPages "Params.hiddenInHomeList" "!=" "true" }}
+{{- $pages := where site.RegularPages.ByDate.Reverse "Params.hiddenInHomeList" "!=" "true" }}
 {{- $paginator := .Paginate $pages }}
 
 <div class="hero-articles">
