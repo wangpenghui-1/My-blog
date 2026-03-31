@@ -1,335 +1,87 @@
 {{ define "main" }}
-{{ $recent := first 6 site.RegularPages.ByDate.Reverse }}
-{{ $lead := "" }}
-{{ $spotlights := slice }}
-{{ $philosophy := site.GetPage "/posts/philosophy" }}
-{{ $soloCompany := site.GetPage "/posts/solo-company" }}
-{{ $philosophyLatest := "" }}
-{{ $soloLatest := "" }}
-{{ $philosophyCount := 0 }}
-{{ $soloCount := 0 }}
 
-{{ if gt (len $recent) 0 }}
-  {{ $lead = index $recent 0 }}
-{{ end }}
-{{ if gt (len $recent) 1 }}
-  {{ $spotlights = first 3 (after 1 $recent) }}
-{{ end }}
+{{- /* Hero Section */}}
+<section class="hero">
+  <video class="hero-video" autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260306_074215_04640ca7-042c-45d6-bb56-58b1e8a42489.mp4" type="video/mp4">
+  </video>
 
-{{ with $philosophy }}
-  {{ $philosophyCount = len .RegularPages }}
-  {{ if gt $philosophyCount 0 }}
-    {{ $philosophyLatest = index .RegularPages.ByDate.Reverse 0 }}
-  {{ end }}
-{{ end }}
+  {{- /* Transparent Nav */}}
+  <nav class="hero-nav">
+    <a class="hero-nav-logo" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+    <ul class="hero-nav-links">
+      {{- range site.Menus.main }}
+      <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+      {{- end }}
+    </ul>
+  </nav>
 
-{{ with $soloCompany }}
-  {{ $soloCount = len .RegularPages }}
-  {{ if gt $soloCount 0 }}
-    {{ $soloLatest = index .RegularPages.ByDate.Reverse 0 }}
-  {{ end }}
-{{ end }}
+  {{- /* Hero Body */}}
+  <div class="hero-body">
 
-<div class="cover-home">
-  <section class="cover-shell">
-    <div class="cover-stage">
-      <div class="cover-hero-panel">
-        <header class="cover-topbar">
-          <a class="cover-brand" href="{{ site.Home.RelPermalink }}" aria-label="返回首页">
-            <span class="cover-brand-mark">CZ</span>
-            <span class="cover-brand-copy">
-              <strong>{{ site.Title }}</strong>
-              <span>Personal Essays / Digital Garden</span>
-            </span>
-          </a>
-
-          <div class="cover-topbar-actions">
-            <nav class="cover-nav" aria-label="首页导航">
-              {{ range site.Menus.main }}
-              <a class="cover-nav-link" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
-              {{ end }}
-              <a class="cover-nav-link" href="#cover-archive">近期档案</a>
-            </nav>
-            {{- if (not site.Params.disableThemeToggle) }}
-            <button class="cover-theme-toggle" data-theme-toggle accesskey="t" title="(Alt + T)" aria-label="切换主题">
-              <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-              <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-              </svg>
-            </button>
-            {{- end }}
-            {{ with $lead }}
-            <a class="cover-cta" href="{{ .RelPermalink }}">
-              <span>开始阅读</span>
-              <span aria-hidden="true">&#8594;</span>
-            </a>
-            {{ end }}
-          </div>
-        </header>
-
-        <div class="cover-hero-grid">
-          <div class="cover-hero-copy">
-            <p class="cover-eyebrow">独立作者 / Philosophy / Solo Company</p>
-            <h1 class="cover-title" aria-label="查拉图的数字花园">
-              <span class="cover-title-small">查拉图的</span>
-              <span class="cover-title-large">
-                <span class="cover-title-line cover-title-line-top">
-                  <span class="cover-title-glyph">数</span>
-                  <span class="cover-title-glyph">字</span>
-                </span>
-                <span class="cover-title-line cover-title-line-bottom">
-                  <span class="cover-title-glyph">花</span>
-                  <span class="cover-title-glyph">园</span>
-                </span>
-              </span>
-            </h1>
-            <p class="cover-deck">
-              {{ site.Params.description }}
-              这里用长文整理判断，用栏目沉淀问题，把个人博客写成一份持续扩展的思想与实践封面。
-            </p>
-            <div class="cover-actions">
-              <a class="cover-pill cover-pill-primary" href="/posts/philosophy/">进入哲学与思考</a>
-              <a class="cover-pill" href="/posts/solo-company/">进入一人公司</a>
-              {{ with $lead }}
-              <a class="cover-pill" href="{{ .RelPermalink }}">本期主文</a>
-              {{ end }}
-            </div>
-          </div>
-
-          <div class="cover-hero-side">
-            <div class="cover-visual" aria-hidden="true">
-              <div class="cover-orbit cover-orbit-one"></div>
-              <div class="cover-orbit cover-orbit-two"></div>
-              <div class="cover-figure">
-                <span class="cover-figure-head"></span>
-                <span class="cover-figure-body"></span>
-                <span class="cover-figure-shadow"></span>
-              </div>
-              <div class="cover-quote-card">
-                <span class="cover-note-label">写作信条</span>
-                <p>让博客不是时间线，而是一套逐步成形的立场系统。</p>
-                <span class="cover-quote-foot">Slow essays. Strong positions.</span>
-              </div>
-            </div>
-
-            <div class="cover-manifest">
-              <span class="cover-note-label">封面说明</span>
-              <h2 class="cover-balanced-title cover-balanced-title-manifest" aria-label="用文字把不确定的时代切成可判断的结构。">
-                <span class="cover-balanced-line">用文字把不确定时代</span>
-                <span class="cover-balanced-line">切成可判断的结构</span>
-              </h2>
-              <p>从哲学问题出发，在一人公司实践里验证，再把经验压缩成可回看的方法与表达。</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="cover-track-grid">
-          <article class="cover-track-card">
-            <span class="cover-track-index">#01</span>
-            <strong>{{ with $philosophy }}{{ .Title }}{{ else }}哲学与思考{{ end }}</strong>
-            <p>价值判断、生活秩序、人与技术</p>
-          </article>
-          <article class="cover-track-card">
-            <span class="cover-track-index">#02</span>
-            <strong>{{ with $soloCompany }}{{ .Title }}{{ else }}一人公司{{ end }}</strong>
-            <p>产品化输出、独立经营、个人品牌</p>
-          </article>
-          <article class="cover-track-card">
-            <span class="cover-track-index">#03</span>
-            <strong>{{ len site.RegularPages }} 篇长文档案</strong>
-            <p>主页优先展示最近形成的判断与问题意识</p>
-          </article>
-          <article class="cover-track-card">
-            <span class="cover-track-index">#04</span>
-            <strong>Slow / Curated / Archive-first</strong>
-            <p>先建立判断，再组织表达，不为频率牺牲质量</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="cover-band">
-        <p class="cover-band-title">阅读路径</p>
-        <div class="cover-band-list">
-          <div class="cover-band-item">
-            <span class="cover-band-dot"></span>
-            <strong>{{ $philosophyCount }}</strong>
-            <span>哲学文章</span>
-          </div>
-          <div class="cover-band-item">
-            <span class="cover-band-dot"></span>
-            <strong>{{ $soloCount }}</strong>
-            <span>实践文章</span>
-          </div>
-          <div class="cover-band-item">
-            <span class="cover-band-dot"></span>
-            {{ with $lead }}
-            <strong>{{ .Date.Format "2006.01.02" }}</strong>
-            {{ else }}
-            <strong>待更新</strong>
-            {{ end }}
-            <span>最近更新</span>
-          </div>
-          <div class="cover-band-item">
-            <span class="cover-band-dot"></span>
-            <strong>2 条主线</strong>
-            <span>抽象判断与具体实践</span>
-          </div>
-        </div>
+    {{- /* Liquid glass badge */}}
+    <div class="hero-badge">
+      <div class="hero-badge-outer">
+        <div class="hero-badge-inner">Philosophy · Ideas · Solo</div>
       </div>
     </div>
-  </section>
 
-  <section class="cover-story-shell">
-    {{ with $lead }}
-    <div class="cover-story-copy">
-      <a class="cover-inline-link" href="{{ .RelPermalink }}">先从本期主文开始</a>
+    {{- /* Headline */}}
+    <div class="hero-headline">
+      <span class="hero-line1">查拉图的</span>
+      <span class="hero-line2">数字花园</span>
     </div>
-    {{ end }}
 
-    <div class="cover-feature-grid">
-      {{ with $lead }}
-      <a class="cover-lead-card" href="{{ .RelPermalink }}" aria-label="阅读主文章：{{ .Title | plainify }}">
-        <div class="cover-card-meta">
-          <span>Lead Essay</span>
-          <span>{{ .Date.Format "2006.01.02" }}</span>
-          <span>{{ .ReadingTime }} min</span>
-        </div>
-        <div class="cover-lead-copy">
-          <span class="cover-note-label">本期主文</span>
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Summary | plainify | truncate 180 }}</p>
-        </div>
-        <div class="cover-card-foot">
-          <span>阅读全文</span>
-          <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Essay{{ end }}</span>
-        </div>
+    {{- /* Sub-headline */}}
+    <p class="hero-sub">探索哲学边界，记录一人公司的真实路径。</p>
+
+    {{- /* Liquid glass buttons */}}
+    <div class="hero-buttons">
+      <a class="hero-btn-primary" href="/posts/">
+        <span class="hero-btn-label">开始探索</span>
+        <span class="hero-btn-pill">进入花园 →</span>
       </a>
-      {{ end }}
-
-      <div class="cover-side-stack">
-        {{ range $spotlights }}
-        <a class="cover-side-card" href="{{ .RelPermalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
-          <div class="cover-card-meta">
-            <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Essay{{ end }}</span>
-            <span>{{ .Date.Format "2006.01.02" }}</span>
-          </div>
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Summary | plainify | truncate 84 }}</p>
-          <div class="cover-card-foot">
-            <span>{{ .ReadingTime }} min</span>
-            <span>进入正文</span>
-          </div>
-        </a>
-        {{ end }}
-
-        <article class="cover-side-card cover-side-card-quote">
-          <span class="cover-note-label">写作命题</span>
-          <p>用长期写作沉淀方法，用栏目结构降低读者进入门槛。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="cover-section-shell">
-    <article class="cover-section-card" data-tone="philosophy">
-      <div class="cover-section-top">
-        <span class="cover-section-index">01</span>
-        <span class="cover-note-label">栏目档案</span>
-      </div>
-      <h2><a href="/posts/philosophy/">{{ with $philosophy }}{{ .Title }}{{ else }}哲学与思考{{ end }}</a></h2>
-      <p>{{ with $philosophy }}{{ .Description }}{{ else }}讨论哲学问题、价值判断、生活秩序与长期思考。{{ end }}</p>
-      <div class="cover-section-tags">
-        <span>价值判断</span>
-        <span>生活秩序</span>
-        <span>人与技术</span>
-      </div>
-      <div class="cover-section-stats">
-        <div>
-          <span>文章数量</span>
-          <strong>{{ $philosophyCount }}</strong>
-        </div>
-        <div>
-          <span>阅读入口</span>
-          <strong>从主问题出发</strong>
-        </div>
-      </div>
-      {{ with $philosophyLatest }}
-      <div class="cover-section-latest">
-        <span>最新文章</span>
-        <strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong>
-      </div>
-      {{ end }}
-    </article>
-
-    <article class="cover-section-card" data-tone="solo">
-      <div class="cover-section-top">
-        <span class="cover-section-index">02</span>
-        <span class="cover-note-label">栏目档案</span>
-      </div>
-      <h2><a href="/posts/solo-company/">{{ with $soloCompany }}{{ .Title }}{{ else }}一人公司{{ end }}</a></h2>
-      <p>{{ with $soloCompany }}{{ .Description }}{{ else }}记录产品、商业、创作与独立经营的实践判断。{{ end }}</p>
-      <div class="cover-section-tags">
-        <span>独立经营</span>
-        <span>产品化输出</span>
-        <span>个人品牌</span>
-      </div>
-      <div class="cover-section-stats">
-        <div>
-          <span>文章数量</span>
-          <strong>{{ $soloCount }}</strong>
-        </div>
-        <div>
-          <span>阅读入口</span>
-          <strong>从实践路径出发</strong>
-        </div>
-      </div>
-      {{ with $soloLatest }}
-      <div class="cover-section-latest">
-        <span>最新文章</span>
-        <strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong>
-      </div>
-      {{ end }}
-    </article>
-  </section>
-
-  <section id="cover-archive" class="cover-archive-shell">
-    <div class="cover-archive-head">
-      <div>
-        <p class="cover-section-kicker">Archive Ledger</p>
-        <h2>近期写作档案</h2>
-      </div>
-    </div>
-
-    <div class="cover-archive-grid">
-      {{ range $index, $page := $recent }}
-      <a class="cover-archive-item{{ if eq $index 0 }} cover-archive-item-featured{{ end }}" href="{{ .RelPermalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
-        <div class="cover-card-meta">
-          <span>{{ printf "%02d" (add $index 1) }}</span>
-          <span>{{ with .CurrentSection }}{{ if ne .RelPermalink "/posts/" }}{{ .Title }}{{ else }}导言{{ end }}{{ else }}Essay{{ end }}</span>
-        </div>
-        <h3>{{ .Title }}</h3>
-        <p>{{ .Summary | plainify | truncate 116 }}</p>
-        <div class="cover-card-foot">
-          <span>{{ .Date.Format "2006.01.02" }}</span>
-          <span>{{ .ReadingTime }} min</span>
-        </div>
+      <a class="hero-btn-secondary" href="/about/">
+        <span class="hero-btn-label">关于我</span>
       </a>
-      {{ end }}
     </div>
-  </section>
+
+  </div>
+
+  {{- /* Scroll indicator */}}
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+{{- /* Article List Section */}}
+{{- $pages := where site.RegularPages "Params.hiddenInHomeList" "!=" "true" }}
+{{- $paginator := .Paginate $pages }}
+
+<div class="hero-articles">
+  <div class="hero-articles-inner">
+    <div class="hero-articles-label">最新文章</div>
+
+    {{- range $paginator.Pages }}
+    <a class="hero-article-item" href="{{ .RelPermalink }}">
+      <span class="hero-article-title">{{ .Title }}</span>
+      <span class="hero-article-meta">{{ .Date.Format "2006.01.02" }}</span>
+    </a>
+    {{- end }}
+
+    {{- if gt $paginator.TotalPages 1 }}
+    <footer class="hero-pagination">
+      {{- if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL | absURL }}">« 上一页</a>
+      {{- end }}
+      {{- if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL | absURL }}">下一页 »</a>
+      {{- end }}
+    </footer>
+    {{- end }}
+
+  </div>
 </div>
+
 {{ end }}

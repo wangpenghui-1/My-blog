@@ -1865,10 +1865,6 @@ body.is-home .header {
   display: none;
 }
 
-body.is-home .main {
-  padding-top: 0.5rem;
-}
-
 /* ── Cover container ── */
 .cover-home {
   width: min(1280px, calc(100% - 48px));
