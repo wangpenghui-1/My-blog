@@ -3627,7 +3627,7 @@ body.is-home .main {
 }
 
 /* ── Responsive ── */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .hero-nav {
     padding: 20px 24px;
   }
@@ -3656,5 +3656,11 @@ body.is-home .main {
 
   .hero-articles {
     padding: 60px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll {
+    animation: none;
   }
 }
