@@ -1,0 +1,170 @@
+{{- define "main" }}
+<style>
+.about-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero */
+.about-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 2rem 3rem;
+  background: var(--code-bg);
+  overflow: hidden;
+}
+
+.about-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: var(--about-bg-image);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.about-name {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 0.5rem;
+  color: var(--primary);
+}
+
+.about-subtitle {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--secondary);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Quotes */
+.about-quotes {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-quote {
+  border-left: 2px solid var(--primary);
+  padding-left: 1.75rem;
+}
+
+.about-quote-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.2rem;
+  line-height: 1.85;
+  color: var(--primary);
+  margin: 0 0 0.75rem;
+  font-weight: 400;
+}
+
+.about-quote-source {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin: 0;
+}
+
+/* Bio */
+.about-bio {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 3rem;
+}
+
+.about-bio p {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--secondary);
+  margin: 0 0 1rem;
+}
+
+.about-bio p:last-child {
+  margin: 0;
+}
+
+/* Back link */
+.about-back {
+  display: inline-block;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  text-decoration: none;
+  margin: 2rem 2rem 0;
+  transition: color 0.2s;
+}
+
+.about-back:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 640px) {
+  .about-hero { min-height: 45vh; padding: 3rem 1.25rem 2rem; }
+  .about-quotes { padding: 2.5rem 1.25rem; gap: 2rem; }
+  .about-bio { padding: 2rem 1.25rem 3rem; }
+  .about-back { margin: 1.5rem 1.25rem 0; }
+}
+</style>
+
+<div class="about-page">
+  <a class="about-back" href="{{ "" | absLangURL }}">← 返回首页</a>
+
+  <section class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="about-hero-content">
+      <h1 class="about-name">查拉图</h1>
+      <p class="about-subtitle">数字花园的主人 · 哲学与一人公司</p>
+    </div>
+  </section>
+
+  <section class="about-quotes">
+    <blockquote class="about-quote">
+      <p class="about-quote-text">你必须有混乱在自己心中，才能诞生一颗舞蹈的星。</p>
+      <p class="about-quote-source">Friedrich Nietzsche · 《查拉图斯特拉如是说》</p>
+    </blockquote>
+
+    <blockquote class="about-quote">
+      <p class="about-quote-text">在严冬，我终于发现，我心中有一个不可战胜的夏天。</p>
+      <p class="about-quote-source">Albert Camus · 《重返提帕萨》</p>
+    </blockquote>
+
+    <blockquote class="about-quote">
+      <p class="about-quote-text">成为你自己。</p>
+      <p class="about-quote-source">Friedrich Nietzsche · 《快乐的科学》</p>
+    </blockquote>
+  </section>
+
+  <div class="about-bio">
+    <p>在这里写关于哲学与思考、一人公司与独立创造的长文。</p>
+    <p>用文字锚定思想，用产品丈量现实。</p>
+  </div>
+</div>
+{{- end }}

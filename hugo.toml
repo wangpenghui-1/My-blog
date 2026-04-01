@@ -50,3 +50,8 @@ title = '查拉图的数字花园'
   name = '一人公司'
   url = '/posts/solo-company/'
   weight = 2
+
+[[menu.main]]
+  name = '关于我'
+  url = '/about/'
+  weight = 3
