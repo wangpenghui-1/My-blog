@@ -1950,16 +1950,19 @@ body.is-home .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-bottom: 100px;
+  justify-content: flex-end;
+  padding-bottom: 80px;
   text-align: center;
 }
 
-/* Liquid glass badge */
+/* Liquid glass badge — top center */
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 44px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .hero-badge-outer {
@@ -1986,13 +1989,18 @@ body.is-home .main {
   text-transform: uppercase;
 }
 
-/* Headline */
+/* Headline — horizontal layout */
 .hero-headline {
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.2em;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .hero-line1 {
-  display: block;
   font-family: 'Barlow', sans-serif;
   font-weight: 300;
   font-size: 72px;
@@ -2002,7 +2010,6 @@ body.is-home .main {
 }
 
 .hero-line2 {
-  display: block;
   font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-size: 76px;
@@ -2236,11 +2243,11 @@ body.is-home .main {
   }
 
   .hero-line1 {
-    font-size: 48px;
+    font-size: 40px;
   }
 
   .hero-line2 {
-    font-size: 52px;
+    font-size: 44px;
   }
 
   .hero-sub {
