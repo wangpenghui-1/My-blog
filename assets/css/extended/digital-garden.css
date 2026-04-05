@@ -1011,6 +1011,9 @@ button {
 .essay-reading-aside {
   position: sticky;
   top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .essay-reading-main {
