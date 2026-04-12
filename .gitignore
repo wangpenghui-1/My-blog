@@ -1,5 +1,7 @@
 .hugo_build.lock
-.codex-review-public/
+.claude/
+.superpowers/
+.codex-*/
 .vercel/
 .vercel-hugo/
 .hugo-server*.log
