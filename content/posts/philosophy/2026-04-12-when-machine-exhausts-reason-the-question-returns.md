@@ -1,16 +1,10 @@
----
-title: "当机器穷尽了理性，三百年前被压下去的那个问题，又回来了"
-date: "2026-04-12T20:04:10+08:00"
-draft: false
-summary: "启蒙运动用三百年压下了一个问题：意义从哪里来？理性足以支撑人类。AI正在完成理性的最后一公里——而当这个项目走到尽头，那个被压下去的问题，将以我们从未预料的方式重新浮出水面。"
-tags: ["哲学", "AI", "理性", "信仰", "文明"]
-category: "philosophy"
-status: "published"
-platforms: ["blog", "wechat"]
-wechat_adapted: false
-cover: "E:/worksapce/myspace/04 Projects/微信公众号/图和素材/Gemini_Generated_Image_3vg57p3vg57p3vg5.png"
-publishDate: "2026-04-12T20:25:35+08:00"
----
++++
+title = "当机器穷尽了理性，三百年前被压下去的那个问题，又回来了"
+date = "2026-04-12T20:04:10+08:00"
+draft = false
+summary = "启蒙运动用三百年压下了一个问题：意义从哪里来？理性足以支撑人类。AI正在完成理性的最后一公里——而当这个项目走到尽头，那个被压下去的问题，将以我们从未预料的方式重新浮出水面。"
+tags = ["哲学", "AI", "理性", "信仰", "文明"]
++++
 
 1784年，康德写下了那句后来被反复引用的话：
 
