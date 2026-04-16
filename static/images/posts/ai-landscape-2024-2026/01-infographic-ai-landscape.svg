@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <style>
+    .title { font-size: 34px; font-weight: 700; fill: #1F2937; }
+    .subtitle { font-size: 21px; font-weight: 400; fill: #64748B; }
+    .th { font-size: 25px; font-weight: 700; fill: #1F2937; }
+    .t { font-size: 22px; font-weight: 500; fill: #334155; }
+    .ts { font-size: 19px; font-weight: 400; fill: #475569; }
+    .caption { font-size: 18px; font-weight: 400; fill: #64748B; font-style: italic; }
+    .box { fill: #F8FAFC; stroke: #CBD5E1; stroke-width: 2; }
+    .blue { fill: #E6F1FB; stroke: #185FA5; }
+    .teal { fill: #E1F5EE; stroke: #0F6E56; }
+    .purple { fill: #EEEDFE; stroke: #534AB7; }
+    .coral { fill: #FAECE7; stroke: #993C1D; }
+    .amber { fill: #FAEEDA; stroke: #854F0B; }
+    .green { fill: #EAF3DE; stroke: #3B6D11; }
+    .gray { fill: #F1EFE8; stroke: #5F5E5A; }
+    .arr { fill: none; stroke: #64748B; stroke-width: 3; }
+    .arr-blue { fill: none; stroke: #185FA5; stroke-width: 3; }
+    .arr-teal { fill: none; stroke: #0F6E56; stroke-width: 3; }
+    .arr-purple { fill: none; stroke: #534AB7; stroke-width: 3; }
+    .arr-coral { fill: none; stroke: #993C1D; stroke-width: 3; }
+    .arr-amber { fill: none; stroke: #854F0B; stroke-width: 3; }
+    .arr-green { fill: none; stroke: #3B6D11; stroke-width: 3; }
+    .dash { stroke-dasharray: 10 8; }
+    @media (prefers-color-scheme: dark) {
+      .title,.th { fill:#F8FAFC; } .subtitle,.caption,.ts { fill:#CBD5E1; } .t { fill:#E2E8F0; }
+      .box { fill:#1E293B; stroke:#64748B; }
+      .blue { fill:#0C447C; stroke:#85B7EB; } .teal { fill:#085041; stroke:#5DCAA5; }
+      .purple { fill:#3C3489; stroke:#AFA9EC; } .coral { fill:#712B13; stroke:#F0997B; }
+      .amber { fill:#633806; stroke:#EF9F27; } .green { fill:#27500A; stroke:#97C459; }
+      .gray { fill:#334155; stroke:#94A3B8; }
+      .arr { stroke:#CBD5E1; }
+    }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="context-stroke"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="36" y="32" width="1128" height="610" rx="28"/>
+  <text class="title" x="600" y="88" text-anchor="middle">2024—2026 AI工具与应用全景</text>
+  <text class="subtitle" x="600" y="123" text-anchor="middle">从模型竞赛，走向 Agent 执行、内容生产与 Physical AI 落地</text>
+
+  <rect class="blue" x="430" y="230" width="340" height="135" rx="24" stroke-width="3"/>
+  <text class="th" x="600" y="276" text-anchor="middle">19个重点领域</text>
+  <text class="t" x="600" y="314" text-anchor="middle">Agent · 多模态 · 开源/闭源</text>
+  <text class="ts" x="600" y="344" text-anchor="middle">软件、内容、企业、机器人、自动驾驶全面展开</text>
+
+  <path d="M520 230 L280 170" class="arr-blue" marker-end="url(#arrow)"/>
+  <path d="M680 230 L920 170" class="arr-purple" marker-end="url(#arrow)"/>
+  <path d="M770 310 L920 470" class="arr-green" marker-end="url(#arrow)"/>
+  <path d="M430 310 L280 470" class="arr-coral" marker-end="url(#arrow)"/>
+  <path d="M600 365 L600 500" class="arr-amber" marker-end="url(#arrow)"/>
+
+  <rect class="blue" x="70" y="140" width="330" height="120" rx="22" stroke-width="3"/>
+  <text class="th" x="235" y="182" text-anchor="middle">Agent 与编程</text>
+  <text class="t" x="235" y="220" text-anchor="middle">MCP · A2A · Codex · Jules</text>
+
+  <rect class="purple" x="800" y="140" width="330" height="120" rx="22" stroke-width="3"/>
+  <text class="th" x="965" y="182" text-anchor="middle">视觉 / 视频内容</text>
+  <text class="t" x="965" y="220" text-anchor="middle">Nano Banana · Veo · Seedance</text>
+
+  <rect class="coral" x="70" y="435" width="330" height="120" rx="22" stroke-width="3"/>
+  <text class="th" x="235" y="477" text-anchor="middle">Physical AI</text>
+  <text class="t" x="235" y="515" text-anchor="middle">Optimus · Figure · Cybercab</text>
+
+  <rect class="green" x="800" y="435" width="330" height="120" rx="22" stroke-width="3"/>
+  <text class="th" x="965" y="477" text-anchor="middle">企业效率</text>
+  <text class="t" x="965" y="515" text-anchor="middle">Copilot · Glean · Agentforce</text>
+
+  <rect class="amber" x="430" y="500" width="340" height="88" rx="22" stroke-width="3"/>
+  <text class="th" x="600" y="536" text-anchor="middle">行业垂直应用</text>
+  <text class="t" x="600" y="570" text-anchor="middle">医疗 · 教育 · 金融 · 法律 · 科研</text>
+
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <style>
+    .title { font-size: 34px; font-weight: 700; fill: #1F2937; }
+    .subtitle { font-size: 21px; font-weight: 400; fill: #64748B; }
+    .th { font-size: 25px; font-weight: 700; fill: #1F2937; }
+    .t { font-size: 22px; font-weight: 500; fill: #334155; }
+    .ts { font-size: 19px; font-weight: 400; fill: #475569; }
+    .caption { font-size: 18px; font-weight: 400; fill: #64748B; font-style: italic; }
+    .box { fill: #F8FAFC; stroke: #CBD5E1; stroke-width: 2; }
+    .blue { fill: #E6F1FB; stroke: #185FA5; }
+    .teal { fill: #E1F5EE; stroke: #0F6E56; }
+    .purple { fill: #EEEDFE; stroke: #534AB7; }
+    .coral { fill: #FAECE7; stroke: #993C1D; }
+    .amber { fill: #FAEEDA; stroke: #854F0B; }
+    .green { fill: #EAF3DE; stroke: #3B6D11; }
+    .gray { fill: #F1EFE8; stroke: #5F5E5A; }
+    .arr { fill: none; stroke: #64748B; stroke-width: 3; }
+    .arr-blue { fill: none; stroke: #185FA5; stroke-width: 3; }
+    .arr-teal { fill: none; stroke: #0F6E56; stroke-width: 3; }
+    .arr-purple { fill: none; stroke: #534AB7; stroke-width: 3; }
+    .arr-coral { fill: none; stroke: #993C1D; stroke-width: 3; }
+    .arr-amber { fill: none; stroke: #854F0B; stroke-width: 3; }
+    .arr-green { fill: none; stroke: #3B6D11; stroke-width: 3; }
+    .dash { stroke-dasharray: 10 8; }
+    @media (prefers-color-scheme: dark) {
+      .title,.th { fill:#F8FAFC; } .subtitle,.caption,.ts { fill:#CBD5E1; } .t { fill:#E2E8F0; }
+      .box { fill:#1E293B; stroke:#64748B; }
+      .blue { fill:#0C447C; stroke:#85B7EB; } .teal { fill:#085041; stroke:#5DCAA5; }
+      .purple { fill:#3C3489; stroke:#AFA9EC; } .coral { fill:#712B13; stroke:#F0997B; }
+      .amber { fill:#633806; stroke:#EF9F27; } .green { fill:#27500A; stroke:#97C459; }
+      .gray { fill:#334155; stroke:#94A3B8; }
+      .arr { stroke:#CBD5E1; }
+    }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="context-stroke"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="42" y="32" width="1116" height="610" rx="28"/>
+  <text class="title" x="600" y="84" text-anchor="middle">AI 编程工具：IDE + 终端 + 云端 Agent</text>
+  <text class="subtitle" x="600" y="120" text-anchor="middle">竞争焦点从“代码补全”转向真实工程交付、测试、PR 与审查</text>
+
+  <rect class="blue" x="80" y="170" width="320" height="285" rx="24" stroke-width="3"/>
+  <text class="th" x="240" y="218" text-anchor="middle">AI 原生 IDE</text>
+  <text class="t" x="240" y="265" text-anchor="middle">Cursor</text>
+  <text class="t" x="240" y="305" text-anchor="middle">Windsurf</text>
+  <text class="t" x="240" y="345" text-anchor="middle">Trae</text>
+  <text class="ts" x="240" y="400" text-anchor="middle">低摩擦 · 上下文连续</text>
+  <text class="ts" x="240" y="430" text-anchor="middle">适合日常迭代</text>
+
+  <rect class="teal" x="440" y="170" width="320" height="285" rx="24" stroke-width="3"/>
+  <text class="th" x="600" y="218" text-anchor="middle">终端 / 本地 Agent</text>
+  <text class="t" x="600" y="265" text-anchor="middle">Claude Code</text>
+  <text class="t" x="600" y="305" text-anchor="middle">Codex CLI</text>
+  <text class="t" x="600" y="345" text-anchor="middle">Aider · Cline</text>
+  <text class="ts" x="600" y="400" text-anchor="middle">跑命令 · 修 Bug</text>
+  <text class="ts" x="600" y="430" text-anchor="middle">重构 · DevOps</text>
+
+  <rect class="purple" x="800" y="170" width="320" height="285" rx="24" stroke-width="3"/>
+  <text class="th" x="960" y="218" text-anchor="middle">云端异步 Agent</text>
+  <text class="t" x="960" y="265" text-anchor="middle">OpenAI Codex</text>
+  <text class="t" x="960" y="305" text-anchor="middle">Google Jules</text>
+  <text class="t" x="960" y="345" text-anchor="middle">Devin · Replit Agent</text>
+  <text class="ts" x="960" y="400" text-anchor="middle">沙箱 · 并行任务</text>
+  <text class="ts" x="960" y="430" text-anchor="middle">PR 工作流</text>
+
+  <rect class="amber" x="170" y="510" width="860" height="70" rx="22" stroke-width="3"/>
+  <text class="th" x="600" y="540" text-anchor="middle">扩展赛道：Vibe Coding + 企业代码治理</text>
+  <text class="ts" x="600" y="568" text-anchor="middle">Lovable · Bolt.new · v0 · Copilot Enterprise · Sourcegraph · JetBrains AI · Qodo</text>
+
+</svg>
