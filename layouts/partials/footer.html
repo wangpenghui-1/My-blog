@@ -14,6 +14,9 @@
                 {{- end }}
             {{- end }}
             <span>Built with <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> & <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a></span>
+            {{- with site.Params.umamiWebsiteId }}
+            <span>本站仅采集匿名、聚合的访问统计，不使用 Cookie。</span>
+            {{- end }}
         </div>
     </div>
 </footer>

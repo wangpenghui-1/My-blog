@@ -3,10 +3,9 @@
 set -euo pipefail
 
 PINNED_HUGO_VERSION="0.157.0"
-BUILD_DIR=".vercel-hugo"
-
-rm -rf "${BUILD_DIR}"
-mkdir -p "${BUILD_DIR}"
+# Every build receives a fresh OS-managed temporary directory. This avoids
+# recursive deletion and cannot touch repository content.
+BUILD_DIR="$(mktemp -d "${TMPDIR:-/tmp}/chalatu-vercel-hugo.XXXXXX")"
 
 echo "Downloading Hugo ${PINNED_HUGO_VERSION}..."
 ARCHIVES=(

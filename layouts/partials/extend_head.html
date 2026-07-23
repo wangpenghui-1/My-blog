@@ -39,3 +39,8 @@
 {{/* Chinese fonts — loli.net mirror (accessible in mainland China) */}}
 <link rel="preconnect" href="https://fonts.loli.net">
 <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{{/* Anonymous, cookie-free analytics. Configure HUGO_PARAMS_UMAMIWEBSITEID in Vercel. */}}
+{{- with site.Params.umamiWebsiteId }}
+<script defer src="https://cloud.umami.is/script.js" data-website-id="{{ . }}"></script>
+{{- end }}
