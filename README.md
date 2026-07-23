@@ -13,9 +13,11 @@
 2. 生成生产构建：
 
    ```bash
-   powershell -ExecutionPolicy Bypass -File scripts/check-future-posts.ps1
+   bash scripts/check-future-posts.sh
    hugo --gc --minify --destination .codex-review-public
    ```
+
+   Windows 环境可改用 `powershell -ExecutionPolicy Bypass -File scripts/check-future-posts.ps1`。
 
 `public/` 是构建产物，不再提交到仓库。
 
@@ -38,8 +40,8 @@
 ## 内容结构
 
 - `content/posts/`：通用文章
-- `content/posts/research/`：科研与开发栏目
-- `content/posts/reading/`：阅读与思考栏目
+- `content/posts/philosophy/`：哲学与思考
+- `content/posts/solo-company/`：一人公司、AI 与科技
 
 ## Vercel 部署
 

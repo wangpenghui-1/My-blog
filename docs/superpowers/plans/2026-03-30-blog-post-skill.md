@@ -1,5 +1,8 @@
 # Blog Post Skill Implementation Plan
 
+> [!CAUTION]
+> 历史实施记录，已停用。本文中的 Windows 路径、旧 Claude skill 位置和发布命令仅用于追溯，不适用于当前 macOS 内容项目，也不得作为自动化操作指令执行。当前流程以 `Content Hub/内容生产与发布流程.md` 和 `Content Hub/AGENTS.md` 为准。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Create a Claude Code skill (`blog-post`) that generates a Chinese Hugo blog post and auto-pushes it to GitHub in a single command.
