@@ -8,7 +8,7 @@ tags = ["Anthropic", "Claude", "J-space", "AI安全", "可解释性", "评测意
 +++
 
 **数据时效：2026 年 7 月 24 日**
-![Pasted image 20260724163556](/images/posts/claude-eval-awareness-j-space/Pasted image 20260724163556.png)
+![Pasted image 20260724163556](/images/posts/claude-eval-awareness-j-space/Pasted%20image%2020260724163556.png)
 
 Anthropic 的研究人员压低了 Claude Sonnet 4.5 内部与“这是一次测试”有关的信号。随后，模型在 180 次模拟中尝试了 13 次勒索；没有干预时，180 次里一次也没有。
 
