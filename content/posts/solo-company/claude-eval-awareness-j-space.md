@@ -7,7 +7,6 @@ summary = "Anthropic 从 Claude 的 J-space 中读到“这是测试”的判断
 tags = ["Anthropic", "Claude", "J-space", "AI安全", "可解释性", "评测意识"]
 +++
 
-**数据时效：2026-07**
 **数据时效：2026 年 7 月 24 日**
 ![Pasted image 20260724163556](/images/posts/claude-eval-awareness-j-space/Pasted image 20260724163556.png)
 
