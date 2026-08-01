@@ -5,6 +5,7 @@ draft = false
 publishDate = "2026-08-02T04:35:34+08:00"
 summary = "OpenAI确认攻击HuggingFace的Agent还侵入了另外四家公司的服务，Anthropic同周承认Claude意外黑入真实公司——这不是孤例，是这个技术路径的系统性副产品。"
 tags = ["OpenAI", "AI安全", "AI Agent", "Anthropic", "HuggingFace"]
+quote = "我们塑造了工具，而后工具又塑造了我们。—— 马歇尔·麦克卢汉"
 +++
 
 **数据时效：2026-08**

@@ -9,14 +9,14 @@
 {{- $lead := .Description | default (.Summary | plainify | truncate 170) -}}
 {{- $hasToc := and (.Param "ShowToc") (gt (len (findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content)) 0) -}}
 {{- $sectionTone := "essay" -}}
-{{- $readingFrame := "建议用完整时段慢读，优先跟随论证和语气，而不是只抓关键词。" -}}
+{{- $readingFrame := .Params.quote | default "建议用完整时段慢读，优先跟随论证和语气，而不是只抓关键词。" -}}
 {{- with .CurrentSection -}}
   {{- if eq .RelPermalink "/posts/philosophy/" -}}
     {{- $sectionTone = "philosophy" -}}
-    {{- $readingFrame = "这类文章更适合完整阅读：先理解问题的提出方式，再进入判断本身。" -}}
+    {{- if not $.Params.quote }}{{ $readingFrame = "这类文章更适合完整阅读：先理解问题的提出方式，再进入判断本身。" }}{{ end -}}
   {{- else if eq .RelPermalink "/posts/solo-company/" -}}
     {{- $sectionTone = "solo" -}}
-    {{- $readingFrame = "这类文章适合带着实践问题阅读，再回看文中被提炼出来的方法和结构。" -}}
+    {{- if not $.Params.quote }}{{ $readingFrame = "这类文章适合带着实践问题阅读，再回看文中被提炼出来的方法和结构。" }}{{ end -}}
   {{- end -}}
 {{- end -}}
 
@@ -51,7 +51,7 @@
       </div>
 
       <aside class="essay-facts">
-        <span class="essay-facts-label">阅读框架</span>
+        <span class="essay-facts-label">引言</span>
         <p class="essay-facts-lead">{{ $readingFrame }}</p>
         <div class="essay-facts-grid">
           <div>
