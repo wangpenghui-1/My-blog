@@ -14,7 +14,7 @@ tags = ["AI 竞争格局", "大模型", "Anthropic", "开源模型", "行业分�
 
 <!-- studio:image:screenshot-2 -->
 
-![screenshot-2-screenshot-66a6177a2e8c](/images/posts/anthropic-q2-revenue-ai-race/screenshot-2-screenshot-66a6177a2e8c.jpg)
+![Anthropic 二季度初步营收首次突破 115 亿美元（来源：Bloomberg News）](/images/posts/anthropic-q2-revenue-ai-race/screenshot-2-screenshot-66a6177a2e8c.jpg)
 
 这个数字让「大模型只会无休止烧钱」的说法站不住了。但它回答不了竞争位置的问题。判断一家 AI 公司现在站在哪，光看营收和估值不够，还要看第三张表，现金自给率、单位智能成本、生态锁定。谁握有定价权，谁才握有下一轮竞争的主动权。
 
@@ -26,7 +26,7 @@ Anthropic 的爆发不是孤立事件。把各家公司的数据摊开，市场�
 
 <!-- studio:image:generated-body-1 -->
 
-![generated-body-1-4a7b2aa2f859](/images/posts/anthropic-q2-revenue-ai-race/generated-body-1-4a7b2aa2f859.jpg)
+![国内外主要 AI 模型公司最新估值与市值对比（单位：十亿美元；口径不同，仅作量级参考）](/images/posts/anthropic-q2-revenue-ai-race/generated-body-1-4a7b2aa2f859.jpg)
 
 再说摊薄。DeepSeek V4 Pro 在 8 月 13 日静默上线，1.6 万亿参数，输入每百万 token 收 0.435 美元，输出收 0.87 美元。xAI 的 Grok 4.6 在 8 月发布，第三方智能指数约 61，和 Anthropic Fable 5、OpenAI GPT-5.6 Sol 处在同一档，定价却只有对手的两到四成。智谱 GLM-5.2 在 6 月以 MIT 协议完全开源，编程盲测 Code Arena 排全球第一。阿里 Qwen3.8-Max 在 8 月 3 日发布，Chatbot Arena 排全球第二，宣布要开源权重。这些模型的共同点，是把原本只有闭源旗舰才有的能力，以接近成本的价格交出去。
 
@@ -44,7 +44,7 @@ Anthropic 的爆发不是孤立事件。把各家公司的数据摊开，市场�
 
 <!-- studio:image:screenshot-1 -->
 
-![screenshot-1-screenshot-bab710ccc18d](/images/posts/anthropic-q2-revenue-ai-race/screenshot-1-screenshot-bab710ccc18d.jpg)
+![LLM 模型智能指数、价格与速度对比榜单（来源：Artificial Analysis）](/images/posts/anthropic-q2-revenue-ai-race/screenshot-1-screenshot-bab710ccc18d.jpg)
 
 价格差距有多具体。DeepSeek V4 Pro 每百万 token 收 0.435 和 0.87 美元，Grok 4.6 收 2 和 6 美元，Claude Opus 5 收 5 和 25 美元，GPT-5.6 Sol 收 5 和 30 美元。能力差缩小到可商用，价格差在十倍上下，企业算总账时很容易转向。低价也有代价，Grok 4.6 的首次响应要等几十秒，适合不赶时间的批处理，不适合交互式的实时场景。DeepSeek 靠自研算力优化把毛利率做到 50% 以上，说明低价和盈利可以同时存在。编码和 Agent 这类重复性高的任务，企业把开源模型部署在自己机房，单次调用成本几乎为零，还顺手解决了数据不出内网的约束。对数据敏感的行业，私有部署比闭源接口更有吸引力，这类客户的账本里，数据安全排在价格前面。Meta 已经用广告收入证明了开源免费模型可以由另一条收入曲线补贴，不必靠卖 API 赚钱。这个模式一旦在更多公司身上走通，闭源 API 的定价权会被进一步摊薄。
 

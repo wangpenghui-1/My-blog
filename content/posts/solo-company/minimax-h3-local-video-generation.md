@@ -18,7 +18,7 @@ tags = ["AI视频生成", "MiniMax H3", "Seedance", "ComfyUI", "本地部署"]
 
 <!-- studio:image:screenshot-1 -->
 
-![screenshot-1-screenshot-81a9891f140a](/images/posts/minimax-h3-local-video-generation/screenshot-1-screenshot-81a9891f140a.jpg)
+![截取标题、发布日期以及说明 15 秒、2K、原生双声道和计划开放权重的首屏/相邻正文；保证文字清楚，排除导航噪音。](/images/posts/minimax-h3-local-video-generation/screenshot-1-screenshot-81a9891f140a.jpg)
 
 ## H3 开放了什么
 
@@ -30,7 +30,7 @@ H3 的开放形式要说准。权重可以下载，本地可以运行和修改�
 
 <!-- studio:image:screenshot-2 -->
 
-![screenshot-2-screenshot-e0d0fa6a707f](/images/posts/minimax-h3-local-video-generation/screenshot-2-screenshot-e0d0fa6a707f.jpg)
+![截取模型名称、模型卡的 License 标识和文件/许可入口；画面必须能让读者看到开放权重并不等于通用开源许可。](/images/posts/minimax-h3-local-video-generation/screenshot-2-screenshot-e0d0fa6a707f.jpg)
 
 公开权重仍然带来几个很实在的变化。素材可以留在本机；相同工作流可以批量排队；模型文件、提示词、随机种子和参数能固定下来；社区还能做量化和显存卸载。量化就是用更低精度保存部分权重，换取更小的显存占用。显存卸载则把暂时不用的权重放到内存里，用速度换空间。
 
@@ -38,7 +38,7 @@ H3 的开放形式要说准。权重可以下载，本地可以运行和修改�
 
 <!-- studio:image:generated-body-1 -->
 
-![generated-body-1-f4e775dc1aef](/images/posts/minimax-h3-local-video-generation/generated-body-1-f4e775dc1aef.jpg)
+![正文机制图，用具体画面解释闭源逐次扣费与本地部署一次投入、反复运行两种成本结构。](/images/posts/minimax-h3-local-video-generation/generated-body-1-f4e775dc1aef.jpg)
 
 ## 成本从账单搬到了桌面
 
@@ -48,7 +48,7 @@ Seedance 2.0 在 2026 年 2 月正式发布。现在字节官方页面也已列�
 
 <!-- studio:image:screenshot-3 -->
 
-![screenshot-3-screenshot-edf1cde6c395](/images/posts/minimax-h3-local-video-generation/screenshot-3-screenshot-edf1cde6c395.jpg)
+![截取 Seedance 2.5 标题和 30 秒生成、两次延长、参考控制与编辑能力说明，避免只截样片。](/images/posts/minimax-h3-local-video-generation/screenshot-3-screenshot-edf1cde6c395.jpg)
 
 价格却不能随手抄一个数字来比。即梦、BytePlus 和第三方 API 面向不同地区，按订阅、积分、秒数或 token 计费，分辨率和输入类型也会改价。截至 2026 年 8 月，我没有找到字节面向所有地区公布的 Seedance 2.0、2.5 统一零售价。MiniMax 自己宣称 H3 API 的 2K 每秒价格低于主流模型的三分之一。这是厂商口径，不能当作同条件账单。
 
@@ -79,7 +79,7 @@ SSD 建议至少空出 100GB。扩散模型、32B 文本编码器、视频 VAE�
 
 <!-- studio:image:screenshot-4 -->
 
-![screenshot-4-screenshot-90f49b410615](/images/posts/minimax-h3-local-video-generation/screenshot-4-screenshot-90f49b410615.jpg)
+![截取 diffusion_models、text_encoders、vae 等目录及文件体量，突出本地部署需要多类大文件；不截社区评论。](/images/posts/minimax-h3-local-video-generation/screenshot-4-screenshot-90f49b410615.jpg)
 
 ## Windows 上先生成一条 5 秒视频
 
@@ -94,7 +94,7 @@ SSD 建议至少空出 100GB。扩散模型、32B 文本编码器、视频 VAE�
 
 <!-- studio:image:screenshot-5 -->
 
-![screenshot-5-screenshot-0e5838b5ae64](/images/posts/minimax-h3-local-video-generation/screenshot-5-screenshot-0e5838b5ae64.jpg)
+![截取工作流标题、节点画布预览以及 Download Workflow 入口，清楚显示它是 ComfyUI 官方模板而非第三方自定义节点教程。](/images/posts/minimax-h3-local-video-generation/screenshot-5-screenshot-0e5838b5ae64.jpg)
 
 节点一片红，通常是 ComfyUI 太旧或工作流没有加载完整。模型下拉框为空，先查目录。生成到一半报内存不足，先缩短时长、降分辨率、关闭其他程序，再检查量化模型和页面文件。CUDA 或 PyTorch 报错时，先换回 ComfyUI 官方便携包附带的环境，不要同时照着三篇教程重装依赖。
 
