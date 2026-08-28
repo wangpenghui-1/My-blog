@@ -99,7 +99,7 @@
       </div>
     </div>
 
-    <aside class="section-hero-panel" data-tone="{{ $sectionTone }}">
+    <aside class="section-hero-panel glass-surface" data-tone="{{ $sectionTone }}" data-glass="basic">
       <span class="section-panel-label">栏目笔记</span>
       <p class="section-panel-lead">{{ $sectionDescriptor }}</p>
       <div class="section-stat-grid">
@@ -122,7 +122,7 @@
       </div>
 
       {{- with $featured }}
-      <a class="section-featured" href="{{ .RelPermalink }}">
+      <a class="section-featured glass-surface" data-glass="refractive" href="{{ .RelPermalink }}">
         <span class="section-featured-label">最新文章</span>
         <h2>{{ .Title }}</h2>
         <p>{{ .Summary | plainify | truncate 118 }}</p>
@@ -142,7 +142,7 @@
 
     <div class="section-post-grid">
       {{- range $index, $page := $paginator.Pages }}
-      <a class="section-post-card section-card-link{{ if eq $index 0 }} section-post-card-emphasis{{ end }}" href="{{ .Permalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
+      <a class="section-post-card section-card-link reveal-item{{ if eq $index 0 }} section-post-card-emphasis{{ end }}" href="{{ .Permalink }}" aria-label="阅读文章：{{ .Title | plainify }}">
         <span class="section-post-index">{{ printf "%02d" (add $index 1) }}</span>
         <div class="section-post-meta">
           <span>{{ .Date | time.Format (default ":date_long" site.Params.DateFormat) }}</span>

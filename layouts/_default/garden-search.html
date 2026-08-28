@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="search-page" data-search-page>
+  <div class="search-page-head reveal-item">
+    <p class="garden-eyebrow">Garden Index / 花园索引</p>
+    <h1>寻找一个判断</h1>
+    <p>搜索文章标题、摘要与标签。无需登录，也不会把搜索内容发送到服务器。</p>
+  </div>
+  <div class="search-page-panel glass-surface reveal-item" data-glass="refractive">
+    <label class="search-field" for="search-page-input">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+      <input id="search-page-input" data-search-input type="search" autocomplete="off" maxlength="80" placeholder="{{ .Params.placeholder }}" aria-label="搜索文章">
+      <kbd>ESC</kbd>
+    </label>
+    <div class="search-status" data-search-status aria-live="polite">输入关键词开始搜索</div>
+    <ul class="search-results" data-search-results aria-label="搜索结果"></ul>
+    <i class="glass-specular" aria-hidden="true"></i>
+  </div>
+</section>
+{{ end }}

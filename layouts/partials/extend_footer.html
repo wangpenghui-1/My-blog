@@ -1,0 +1,8 @@
+{{- partial "search_dialog.html" . -}}
+{{- $liquidGarden := resources.Get "js/liquid-garden.js" | js.Build | resources.Minify -}}
+{{- if not site.Params.assets.disableFingerprinting -}}
+  {{- $liquidGarden = $liquidGarden | fingerprint -}}
+  <script defer src="{{ $liquidGarden.RelPermalink }}" integrity="{{ $liquidGarden.Data.Integrity }}"></script>
+{{- else -}}
+  <script defer src="{{ $liquidGarden.RelPermalink }}"></script>
+{{- end -}}

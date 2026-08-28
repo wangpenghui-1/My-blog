@@ -1,87 +1,67 @@
 {{ define "main" }}
+{{- $allPages := where site.RegularPages.ByDate.Reverse "Params.hiddenInHomeList" "!=" "true" -}}
+{{- $featured := index $allPages 0 -}}
+{{- $streamPages := after 1 $allPages -}}
+{{- $paginator := .Paginate $streamPages -}}
 
-{{- /* Hero Section */}}
-<section class="hero">
-  <video class="hero-video" autoplay loop muted playsinline>
-    <source src="https://github.com/wangpenghui-1/My-blog/releases/download/assets-v1/black-hole-1.mp4" type="video/mp4">
-  </video>
-
-  {{- /* Transparent Nav */}}
-  <nav class="hero-nav">
-    <a class="hero-nav-logo" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
-    <ul class="hero-nav-links">
-      {{- range site.Menus.main }}
-      <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
-      {{- end }}
-    </ul>
-  </nav>
-
-  {{- /* Hero Body */}}
-  <div class="hero-body">
-
-    {{- /* Badge — centered above title */}}
-    <div class="hero-badge">
-      <div class="hero-badge-outer">
-        <div class="hero-badge-inner">Philosophy · Ideas · Solo</div>
+<section class="garden-hero" aria-labelledby="garden-title">
+  <div class="garden-light garden-light-a" aria-hidden="true"></div>
+  <div class="garden-light garden-light-b" aria-hidden="true"></div>
+  <div class="garden-hero-inner">
+    <div class="garden-hero-copy reveal-item">
+      <p class="garden-kicker"><span>Digital Garden</span><span>Est. 2026</span></p>
+      <h1 id="garden-title"><span>查拉图的</span><em>数字花园</em></h1>
+      <p class="garden-manifesto">探索哲学的边界，记录一人公司的真实路径。<br>让判断慢下来，让作品留下来。</p>
+      <div class="garden-hero-actions">
+        <a class="liquid-button liquid-button-primary glass-surface" data-glass="refractive" href="/posts/"><span>开始阅读</span><span aria-hidden="true">↗</span><i class="glass-specular" aria-hidden="true"></i></a>
+        <a class="liquid-button" href="/about/">关于这座花园</a>
+      </div>
+      <div class="garden-routes" aria-label="内容栏目">
+        <a href="/posts/philosophy/"><span>01</span>哲学与思考</a>
+        <a href="/posts/solo-company/"><span>02</span>一人公司</a>
       </div>
     </div>
 
-    {{- /* Headline — horizontal */}}
-    <div class="hero-headline">
-      <span class="hero-line1">查拉图的</span>
-      <span class="hero-line2">数字花园</span>
-    </div>
-
-    {{- /* Sub-headline */}}
-    <p class="hero-sub">探索哲学边界，记录一人公司的真实路径</p>
-
-    {{- /* Liquid glass buttons */}}
-    <div class="hero-buttons">
-      <a class="hero-btn-primary" href="/posts/">
-        <span class="hero-btn-label">开始探索</span>
-        <span class="hero-btn-pill">进入花园 →</span>
-      </a>
-      <a class="hero-btn-secondary" href="/about/">
-        <span class="hero-btn-label">关于我</span>
-      </a>
-    </div>
-
-  </div>
-
-  {{- /* Scroll indicator */}}
-  <div class="hero-scroll">
-    <span>SCROLL</span>
-    <div class="hero-scroll-line"></div>
-  </div>
-</section>
-
-{{- /* Article List Section */}}
-{{- $pages := where site.RegularPages.ByDate.Reverse "Params.hiddenInHomeList" "!=" "true" }}
-{{- $paginator := .Paginate $pages }}
-
-<div class="hero-articles">
-  <div class="hero-articles-inner">
-    <div class="hero-articles-label">最新文章</div>
-
-    {{- range $paginator.Pages }}
-    <a class="hero-article-item" href="{{ .RelPermalink }}">
-      <span class="hero-article-title">{{ .Title }}</span>
-      <span class="hero-article-meta">{{ .Date.Format "2006.01.02" }}</span>
+    {{- with $featured }}
+    <a class="garden-feature glass-surface reveal-item" data-glass="refractive" href="{{ .RelPermalink }}" aria-label="阅读最新文章：{{ .Title | plainify }}">
+      <span class="garden-feature-orbit" aria-hidden="true"></span>
+      <div class="garden-feature-top"><span>Latest Essay</span><span>{{ .Date.Format "2006.01.02" }}</span></div>
+      <div class="garden-feature-body">
+        <p>{{ with .CurrentSection }}{{ .Title }}{{ else }}Essay{{ end }} · {{ .ReadingTime }} min</p>
+        <h2>{{ .Title }}</h2>
+        <span>{{ .Summary | plainify | truncate 128 }}</span>
+      </div>
+      <div class="garden-feature-footer"><span>打开文章</span><span aria-hidden="true">→</span></div>
+      <i class="glass-specular" aria-hidden="true"></i>
     </a>
     {{- end }}
-
-    {{- if gt $paginator.TotalPages 1 }}
-    <footer class="hero-pagination">
-      {{- if $paginator.HasPrev }}
-      <a href="{{ $paginator.Prev.URL | absURL }}">« 上一页</a>
-      {{- end }}
-      {{- if $paginator.HasNext }}
-      <a href="{{ $paginator.Next.URL | absURL }}">下一页 »</a>
-      {{- end }}
-    </footer>
-    {{- end }}
-
   </div>
-</div>
+  <div class="garden-hero-foot" aria-hidden="true"><span>Scroll to cultivate</span><span></span><span>{{ len $allPages }} essays growing</span></div>
+</section>
 
+<section class="garden-stream" aria-labelledby="latest-title">
+  <div class="garden-stream-head reveal-item">
+    <div><p class="garden-eyebrow">Writing Ledger / 写作档案</p><h2 id="latest-title">最近更新</h2></div>
+    <p>这里不追逐信息流。每篇文章都试图留下一个可以被反复检验的判断。</p>
+  </div>
+  <div class="garden-post-list">
+    {{- range $index, $page := $paginator.Pages }}
+    <a class="garden-post reveal-item" href="{{ .RelPermalink }}">
+      <span class="garden-post-number">{{ printf "%02d" (add $index 1) }}</span>
+      <div class="garden-post-copy">
+        <div class="garden-post-meta"><span>{{ with .CurrentSection }}{{ .Title }}{{ else }}Essay{{ end }}</span><span>{{ .Date.Format "2006.01.02" }} · {{ .ReadingTime }} min</span></div>
+        <h3>{{ .Title }}</h3><p>{{ .Summary | plainify | truncate 116 }}</p>
+      </div>
+      <span class="garden-post-arrow" aria-hidden="true">↗</span>
+    </a>
+    {{- end }}
+  </div>
+  {{- if gt $paginator.TotalPages 1 }}
+  <nav class="garden-pagination" aria-label="文章分页">
+    {{- if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL | absURL }}">← 上一页</a>{{ else }}<span></span>{{ end }}
+    <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+    {{- if $paginator.HasNext }}<a href="{{ $paginator.Next.URL | absURL }}">下一页 →</a>{{ end }}
+  </nav>
+  {{- end }}
+</section>
 {{ end }}
