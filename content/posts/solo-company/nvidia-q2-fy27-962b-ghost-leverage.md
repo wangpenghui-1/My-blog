@@ -24,7 +24,7 @@ tags = ["AI", "英伟达", "算力经济", "AI 基础设施", "财报"]
 
 <!-- studio:image:screenshot-1 -->
 
-![英伟达 Q2 FY2027 财报新闻稿页面，单季营收 962.21 亿美元、同比增长 106%，数据中心收入 890 亿美元、占比约 92.5%](/images/posts/nvidia-q2-fy27-962b-ghost-leverage/screenshot-1-screenshot-f89b3cd7e708.jpg)
+![英伟达 Q2 FY2027 财报新闻稿页面，单季营收 962.21 亿美元、同比增长 106%，数据中心收入 890 亿美元、占比约 92.5%](/images/posts/nvidia-q2-fy27-962b-ghost-leverage/screenshot-1-screenshot-6aa761888986.jpg)
 
 ## 幽灵杠杆藏在会计里
 
