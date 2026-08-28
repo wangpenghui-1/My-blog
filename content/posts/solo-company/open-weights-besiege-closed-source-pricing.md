@@ -16,13 +16,13 @@ tags = ["大模型", "开源", "DeepSeek", "Qwen", "AI 定价"]
 
 <!-- studio:image:screenshot-2 -->
 
-![screenshot-2-screenshot-368ecb898cb5](/images/posts/open-weights-besiege-closed-source-pricing/screenshot-2-screenshot-368ecb898cb5.jpg)
+![DeepSeek V4-Flash 官方定价页，输入约 0.14 美元、输出约 0.28 美元每百万 token](/images/posts/open-weights-besiege-closed-source-pricing/screenshot-2-screenshot-368ecb898cb5.jpg)
 
 从六月初到八月初，八周时间，中国有五家公司前后脚出了模型。智谱的 GLM-5.2，阿里的千问 3.8-Max，月之暗面的 Kimi K3，字节的 Seedance 2.5，还有站在这波降价最前头的 DeepSeek V4-Flash。一口气连出五个，这个节奏比任何一款模型都更说明问题。彭博在报道里转述了中国科技分析师 Poe Zhao 的判断，他说自 2025 年以来最重要的变化，是中国的进步不再像单一公司的突破。最初的 DeepSeek 时刻看起来是特例，但最近的产品表明，中国已经拥有了一套可复制的体系，能够生产接近全球前沿的模型。
 
 <!-- studio:image:screenshot-1 -->
 
-![screenshot-1-screenshot-15553c7c25ad](/images/posts/open-weights-besiege-closed-source-pricing/screenshot-1-screenshot-15553c7c25ad.jpg)
+![阿里巴巴通义千问 Qwen 官网，阿里首次开放 Max 级旗舰权重](/images/posts/open-weights-besiege-closed-source-pricing/screenshot-1-screenshot-15553c7c25ad.jpg)
 
 这套可复制的体系，才是把价格打下来的东西。一次灵光造不出一连串模型。能批量产出又快又便宜的模型，靠的是一套把公开论文、一次只调动一小部分参数的混合专家架构、自家推理优化叠在一起的流程，一条流水线。Poe Zhao 还补了一句，这套体系最大的变化，是它终于能稳定地冒尖。
 
@@ -44,7 +44,7 @@ tags = ["大模型", "开源", "DeepSeek", "Qwen", "AI 定价"]
 
 <!-- studio:image:screenshot-3 -->
 
-![screenshot-3-screenshot-3e4364e7e768](/images/posts/open-weights-besiege-closed-source-pricing/screenshot-3-screenshot-3e4364e7e768.jpg)
+![Anthropic Claude Fable 5，单次复杂任务约 3.15 美元，是当时公开最贵模型](/images/posts/open-weights-besiege-closed-source-pricing/screenshot-3-screenshot-3e4364e7e768.jpg)
 
 这条缝决定了两件事。第一，做采购和合规的人，没法把开放权重当开源去走流程，你只能信它公布的字面，没法核实它没说出口的部分。第二，也是更关键的，顶级能力的天花板，卡在高质量真实反馈数据能不能持续喂回来那条线上，那正是开放权重模型没公开、也最难复制的一块。
 
